@@ -3,16 +3,16 @@
 <header id="header-container" class="mat-drawer-container">
 
   <mat-stepper class="header-stepper" [linear]="false" #stepper>
-    <mat-step [stepControl]="FirstFormGroup">
+    <mat-step [editable]="true">
       <ng-template matStepLabel><div routerLinkActive="active">Charakter</div></ng-template>
     </mat-step>
-    <mat-step [stepControl]="SecondFormGroup">
+    <mat-step [editable]="true">
       <ng-template matStepLabel><div routerLinkActive="active">Klasse</div></ng-template>
     </mat-step>
-    <mat-step>
+    <mat-step [editable]="true">
       <ng-template matStepLabel><div routerLinkActive="active">Items</div></ng-template>
     </mat-step>
-    <mat-step>
+    <mat-step [editable]="true">
       <ng-template matStepLabel><div routerLinkActive="active">Orte</div></ng-template>
     </mat-step>
   </mat-stepper>
