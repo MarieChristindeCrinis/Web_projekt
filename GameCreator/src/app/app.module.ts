@@ -13,14 +13,21 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTableModule } from '@angular/material/table';
+import { HomeComponent } from './home/home.component';
+import { MatRippleModule } from '@angular/material/core';
+import { ItemOverviewComponent } from './items/ui/item-overview/item-overview.component';
+import { ItemCardComponent } from './items/ui/item-card/item-card.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    SidebarComponent
+    ItemOverviewComponent,
+    HomeComponent,
+    ItemCardComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    NgbModule
+    NgbModule,
+    MatTableModule,
+    MatRippleModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

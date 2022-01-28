@@ -1,0 +1,80 @@
+// Import material theming functions
+@import '~@angular/material/theming';
+
+// Copy the palettes from your selected theme (usually theme.scss).
+$app-primary: mat-palette($mat-grey);
+$app-accent:  mat-palette($mat-purple);
+$app-warn:    mat-palette($mat-pink);
+
+// Create your Sass color vars (will be available in all the project)
+$primary: mat-color($app-primary);
+$accent: mat-color($app-accent);
+$accent_2: mat-color($app-accent, 700);
+$warn: mat-color($app-warn);
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.selected-header {
+  position: absolute;
+
+  left: 25%;
+  top: 3%;
+
+  transform: translate(-50%, 0%);
+}
+
+.available-header {
+  position: absolute;
+
+  right: 25%;
+  top: 3%;
+
+  transform: translate(50%, 0%);
+}
+
+.header {
+  font-size: 42px;
+  font-weight: bold;
+
+  color: rgba(0,0,0,1);
+  text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5);
+}
+
+mat-table {
+  position: absolute;
+
+  left: 5%;
+  top: 10%;
+
+  width: 40%;
+  max-height: 80%;
+}
+
+.table-row:hover {
+  background-color: $accent;
+}
+
+.table-row:checked {
+  background-color: $accent;
+}
+
+.highlight {
+  background-color: $accent_2;
+}
+
+.item-card-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  left: 75%;
+  top: 10%;
+
+  transform: translate(-50%, 0%);
+
+  overflow-y: scroll;
+  height: 80%;
+}

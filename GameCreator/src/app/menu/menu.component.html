@@ -2,18 +2,21 @@
 
 <header id="header-container" class="mat-drawer-container">
 
-  <mat-stepper class="header-stepper" [linear]="false" #stepper>
+  <mat-stepper #stepper class="header-stepper" [linear]="false" >
     <mat-step [editable]="true">
-      <ng-template matStepLabel><div routerLinkActive="active">Charakter</div></ng-template>
+      <ng-template matStepLabel><div>Introduction</div></ng-template>
     </mat-step>
     <mat-step [editable]="true">
-      <ng-template matStepLabel><div routerLinkActive="active">Klasse</div></ng-template>
+      <ng-template matStepLabel><div>Charakter</div></ng-template>
     </mat-step>
     <mat-step [editable]="true">
-      <ng-template matStepLabel><div routerLinkActive="active">Items</div></ng-template>
+      <ng-template matStepLabel><div>Klasse</div></ng-template>
+    </mat-step>
+    <mat-step [editable]="true" >
+      <ng-template matStepLabel><div>Items</div></ng-template>
     </mat-step>
     <mat-step [editable]="true">
-      <ng-template matStepLabel><div routerLinkActive="active">Orte</div></ng-template>
+      <ng-template matStepLabel><div>Orte</div></ng-template>
     </mat-step>
   </mat-stepper>
 
