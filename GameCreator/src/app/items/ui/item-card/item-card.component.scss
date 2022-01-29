@@ -1,10 +1,45 @@
 
 .example-card {
-  max-width: 400px;
+  max-width: 800px;
   margin-top: 20px;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.avatar-icon {
+  background-size: contain;
 }
+
+.card-content {
+  display: flexbox;
+}
+
+.item-icon {
+  position: absolute;
+
+  right: 15%;
+  top: 7.5%;
+  width: 20%;
+}
+
+#first-field {
+  margin-right: 50px;
+}
+
+mat-form-field {
+  margin: 0px 10px;
+  width: 45%;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgba(255, 255, 255, 0.7) !important;
+ }
+
+::ng-deep .mat-focused .mat-form-field-underline::before {
+  /*change color of underline*/
+  background-color: white !important;
+}
+
+::ng-deep .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: rgba(255, 255, 255, 0.5) !important;
+ }

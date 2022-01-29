@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ItemTableViewModel as ItemViewModel } from '../view-model/ItemTableViewModel';
+import { ItemViewModel as ItemViewModel } from '../view-model/ItemTableViewModel';
 import { Subscription } from 'rxjs';
 import { ItemOverviewDataService } from '../service/item-overview-data.service';
 
@@ -10,7 +10,7 @@ import { ItemOverviewDataService } from '../service/item-overview-data.service';
 })
 export class ItemOverviewComponent implements OnInit, OnDestroy {
 
-  public ColumnHeaders: string[] = ['index', 'icon', 'name', 'rarity', 'price', 'weight'];
+  public ColumnHeaders: string[] = ['index', 'name', 'category', 'rarity', 'price', 'weight'];
   public SelectedItems: ItemViewModel[];
   public AvailableItems: ItemViewModel[];
 
