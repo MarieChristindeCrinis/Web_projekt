@@ -20,6 +20,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { ItemOverviewComponent } from './items/ui/item-overview/item-overview.component';
 import { ItemCardComponent } from './items/ui/item-card/item-card.component';
 import { MatCardModule } from '@angular/material/card';
+import { CharacterModule } from './character/character.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatCardModule } from '@angular/material/card';
     NgbModule,
     MatTableModule,
     MatRippleModule,
-    MatCardModule
+    MatCardModule,
+    CharacterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

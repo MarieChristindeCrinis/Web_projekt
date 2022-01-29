@@ -1,0 +1,15 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "name": "Leather Boots of Doom",
+            "rarity": 1,
+            "price": 5,
+            "weight": 3.3,
+            "icon": "./icon"
+        }
+    ],
+    "characters": [
+
+    ]
+}
