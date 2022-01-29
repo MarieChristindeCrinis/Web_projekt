@@ -39,7 +39,7 @@ export class MenuComponent implements AfterViewInit {
       this.mStepper.selectionChange
         .subscribe(evt => this._NavigateToStep(evt.selectedIndex)));
 
-      this._NavigateToStep(0);
+      // this._NavigateToStep(0);
   }
 
   private _NavigateToStep(index : number)

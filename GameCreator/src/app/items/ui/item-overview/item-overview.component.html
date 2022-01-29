@@ -6,14 +6,10 @@
       <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
+      <!-- Index Column -->
       <ng-container matColumnDef="index">
         <mat-header-cell *matHeaderCellDef> Nr. </mat-header-cell>
         <mat-cell mat-cell *matCellDef="let element; let i = index;"> {{i}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="icon">
-        <mat-header-cell  *matHeaderCellDef> Icon </mat-header-cell>
-        <mat-cell *matCellDef="let element"> Icon </mat-cell>
       </ng-container>
 
       <!-- Name Column -->
@@ -22,20 +18,27 @@
         <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
       </ng-container>
 
-      <!-- Weight Column -->
+      <!-- Category Column -->
+      <ng-container matColumnDef="category">
+        <mat-header-cell  *matHeaderCellDef> Category </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Category}} </mat-cell>
+      </ng-container>
+
+      <!-- Rarity Column -->
       <ng-container matColumnDef="rarity">
         <mat-header-cell *matHeaderCellDef> Rarity </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.Rarity}} </mat-cell>
       </ng-container>
 
-      <!-- Symbol Column -->
+      <!-- Price Column -->
       <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef> Wert </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.Price}} </mat-cell>
       </ng-container>
 
+      <!-- Weight Column -->
       <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef> Gewicht </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.Weight}} </mat-cell>
       </ng-container>
 
@@ -51,7 +54,7 @@
     <div class="item-card-container">
 
       <div *ngFor="let item of AvailableItems">
-        <app-item-card></app-item-card>
+        <app-item-card [Item]="item"></app-item-card>
       </div>
 
     </div>

@@ -61,6 +61,26 @@ mat-table {
   background-color: $accent;
 }
 
+.mat-column-index {
+  flex-grow: 0.35;
+}
+
+.mat-column-weight {
+  flex-grow: 0.5;
+}
+
+.mat-column-price {
+  flex-grow: 0.75;
+}
+
+.mat-column-rarity {
+  flex-grow: 0.8;
+}
+
+.mat-column-name {
+  flex-grow: 1.3;
+}
+
 .highlight {
   background-color: $accent_2;
 }
