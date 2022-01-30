@@ -6,6 +6,8 @@ import { LocationSearchComponent } from './feature/location-search/location-sear
 import { LocationService } from './data-access/location.service';
 import { FormsModule } from '@angular/forms';
 import { LocationRoutingModule } from './location-routing.module';
+import { ValidatorDirective } from './validation/validator.directive';
+import { LocationOverviewComponent } from './ui/location-overview/location-overview/location-overview.component';
 
 
 
@@ -14,6 +16,8 @@ import { LocationRoutingModule } from './location-routing.module';
     LocationCardComponent,
     LocationEditComponent,
     LocationSearchComponent,
+    ValidatorDirective,
+    LocationOverviewComponent,
   ],
   providers: [
     LocationService

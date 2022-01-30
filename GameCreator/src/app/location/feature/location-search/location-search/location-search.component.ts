@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LocationService } from 'src/app/location/data-access/location.service';
 import { Location } from '../../../../entities/location';
 
@@ -6,31 +6,39 @@ import { Location } from '../../../../entities/location';
   selector: 'app-location-search',
   templateUrl: './location-search.component.html',
   styleUrls: ['./location-search.component.css'],
-  providers: [LocationService]
 })
 export class LocationSearchComponent implements OnInit {
-  id: number = 0;
-  name: string = "Test";
-  locations : Array<Location> = [];
-  selectedLocation: Location | undefined;
+  @Output() locations = new EventEmitter<Location[]>();
+  name: string;
 
   constructor(private locationService: LocationService) { }
 
   ngOnInit(): void {
+    this.search();
   }
 
   search(): void {
-    this.locationService.find(this.name)
-      .subscribe({
+    this.locationService.findLocations(
+      {
         next:  (locations: Location[]) => {
-          this.locations = locations;
-          console.log({ locations });
+          this.locations.emit(locations);
+        console.log(JSON.stringify(locations));
         },
-        error: (err: any) => console.error('Loading of location failed', err)
-      });
+        error: (error) => console.log(error),
+        complete: () => console.log('Done')
+      },
+      this.name
+    )
   }
-  
-  select(loc: Location): void {
-    this.selectedLocation = loc;
-  }
+
+  // search(): void {
+  //   this.locationService.findLocations(this.name)
+  //     .subscribe({
+  //       next: locations => {
+  //         this.locations = locations;
+  //         console.log('My flights', { locations });
+  //       },
+  //       error: err => console.error('Flights loading error', err)
+  //     });
+  // }
 }
