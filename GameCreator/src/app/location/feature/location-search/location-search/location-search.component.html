@@ -1,22 +1,33 @@
-<p>location-search works!</p>
 <div class="card">
     <div class="header">
         <h2 class="title">Search Location</h2>
     </div>
 
     <div class="content">
-        <form>
+        <form #searchForm="ngForm">
             <div class="form-group">
               <label>Name:</label>
               <input [(ngModel)]="name" name="name" required class="form-control"/>
             </div>
         </form>
 
-        <p>Value: {{ name }}</p>
-
         <div class="form-group">
-            <button [disabled]="!name" (click)="search()" class="btn">Search</button>
+            <button [disabled]="!name" (click)="search()" class="btn btn-default">Search</button>
         </div>
-        
+
+        <div
+        class="alert alert-danger"
+        *ngIf="searchForm?.controls?.['name']?.hasError('required')">
+        This is a mandatory input field!
+        </div>
+
+        <div
+            class="alert alert-danger"
+            *ngIf="searchForm?.controls?.['name']?.hasError('location')">
+            The entered location name is not valid ({{ searchForm?.controls?.['name']?.errors?.['location'].actualLocationNames }})!
+            The following locations are allowed: {{
+            searchForm?.controls?.['name']?.errors?.['location'].validNames.join(', ')
+        }}
+      </div>
     </div>
 </div>

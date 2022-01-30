@@ -1,17 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import locations from '../../../../../Backend/db.json';
+import { Observer } from 'rxjs';
+import { ServerLocationService } from 'src/app/shared/server-location/server-location.service';
 import { Location } from '../../entities/location'
 
-@Injectable({
-  providedIn: 'root'
-})
+ 
+@Injectable({providedIn: "root"})
 export class LocationService {
-  constructor(private http: HttpClient) {  }
+  
+  constructor(private httpClient: HttpClient, private serverLocationService : ServerLocationService) {  }
 
-  public find(searchName: string): any {
-    const locationList:Array<Location> = locations.locations;
-    return locationList.find(loc => loc.name === searchName);
+  findLocations(observer : Observer<Location[]>, name?: string): void {
+    this.httpClient.get<Location[]>(`${this.serverLocationService.ServerLocation}locations`, name ? {params: new HttpParams().set('name', name)} : undefined)
+      .subscribe(observer);
   }
 }

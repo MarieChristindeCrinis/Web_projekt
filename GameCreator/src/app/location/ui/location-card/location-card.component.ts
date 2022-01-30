@@ -11,7 +11,6 @@ export class LocationCardComponent implements OnInit {
   @Input() selected: boolean = false;
   @Output() selectedChanged = new EventEmitter();
 
-
   constructor() { }
 
   ngOnInit(): void {

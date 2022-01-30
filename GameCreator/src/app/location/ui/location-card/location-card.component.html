@@ -1,18 +1,25 @@
 
 <div
     class="card"
-    [ngStyle]="{'background-color': (selected) ? 'rgb(204, 197, 185)' : 'white' }">
+    [ngStyle]="{'background-color': (selected) ? 'white' : 'grey' }">
     
     <div class="header">
-        <h2>This is a test</h2>
+        <h2>{{ locationItem?.name }}</h2>
     </div>
 
+    <div class="content">
+        <h4>{{ locationItem?.id }}</h4>
+        <ul>
+            <li *ngFor="let type of locationItem?.biome_types">
+                {{ type }}
+            </li>
+        </ul>
+        
+        <h4>{{ locationItem?.biome_size }}</h4>
+        <h4>{{ locationItem?.day_night_cycle }}</h4>
+        <h4>{{ locationItem?.weather_cycle }}</h4>
+        <h4>{{ locationItem?.npc_density }}</h4>
+
+        <button class="btn btn-default" [routerLink]="['../location-edit', locationItem?.id]">Edit</button>
+    </div>
 </div>
-
-
-<p>location-card works!</p>
-<p>
-    Today's item: {{locationItem}}
-</p>
-
-<h1>test</h1>

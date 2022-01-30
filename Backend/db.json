@@ -103,5 +103,46 @@
       "preferred_weapon": "Shield",
       "id": 3
     }
+  ],
+  "locations": [
+    {
+      "id": 0,
+      "name": "Desert Island",
+      "biome_types": "desert",
+      "biome_size": "normal",
+      "day_night_cycle": false,
+      "weather_cycle": true,
+      "npc_desity": "low"
+    },
+    {
+      "id": 1,
+      "name": "So many NPCs!",
+      "biome_types": [
+        "desert",
+        "tundra",
+        "savanna"
+      ],
+      "biome_size": "small",
+      "day_night_cycle": true,
+      "weather_cycle": false,
+      "npc_desity": "high"
+    },
+    {
+      "id": 2,
+      "name": "Countless biomes",
+      "biome_types": [
+        "desert",
+        "grassland",
+        "tundra",
+        "ice",
+        "savanna",
+        "forest",
+        "rainforest"
+      ],
+      "biome_size": "big",
+      "day_night_cycle": false,
+      "weather_cycle": false,
+      "npc_desity": "normal"
+    }
   ]
 }
