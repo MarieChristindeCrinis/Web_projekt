@@ -87,18 +87,18 @@
       "name": "Prinz Drelf",
       "race": 3,
       "backstory": "Once a noble prince of dwarfhood has now fallen to corruption",
-      "age": 300,
+      "age": 400,
       "weight": 80,
       "level": 5
     },
     {
-      "id": "d7280be1-613e-69b6-7827-6bd65b012670",
-      "name": "qwert",
+      "id": "2338aac5-8aaa-b7eb-8524-aa0ffddd9245",
+      "name": "Julian der Müffelnde",
       "race": 2,
-      "backstory": "qwerqgqewrerqwerqwer",
-      "age": 13,
-      "weight": 444,
-      "level": 123
+      "backstory": "Stinkender Zwerg der mit seinem Gestank die Gegener vertreibt, aber leider gleichzeitig der schlechteste Rouge ist wo gibt, schwöre.",
+      "age": 70,
+      "weight": 1000,
+      "level": 3
     }
   ],
   "locations": [
