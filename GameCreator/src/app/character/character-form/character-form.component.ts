@@ -57,6 +57,11 @@ export class CharacterFormComponent implements OnInit {
   }
 
   cancel() : void {
-    this.router.navigate(['../character'], {relativeTo: this.route});
+    if(this.dialogMode === 'add') {
+      this.router.navigate(['../character'], {relativeTo: this.route});
+    }
+    else {
+      this.router.navigate(['../../character'], {relativeTo: this.route});
+    }
   }
 }
