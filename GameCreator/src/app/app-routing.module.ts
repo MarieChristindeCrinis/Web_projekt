@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CharacterViewComponent } from './character/character-view/character-view.component';
+import { ClassOverviewComponent } from './class/ui/class-overview/class-overview.component';
+//import { ClassComponent } from './class/class.component';
 import { HomeComponent } from './home/home.component';
 import { ItemFormComponent } from './items/ui/item-form/item-form.component';
 import { ItemOverviewComponent } from './items/ui/item-overview/item-overview.component';
@@ -35,6 +37,11 @@ const APP_ROUTES: Routes = [
   {
     path: 'character',
     component: CharacterViewComponent
+  },
+  {
+    path: 'class',
+    loadChildren: () => import('./class/class-routing.module')
+      .then(esm => esm.ClassRoutingModule)
   },
   { 
     path: '**',

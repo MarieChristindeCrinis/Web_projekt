@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ItemFormComponent } from './items/ui/item-form/item-form.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ClassModule } from './class/class.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
     ItemOverviewComponent,
     HomeComponent,
     ItemCardComponent,
-    ItemFormComponent,
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +56,8 @@ import { MatSelectModule } from '@angular/material/select';
     HttpClientModule,
     MatTooltipModule,
     MatSelectModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ClassModule
   ],
   providers: [],
   bootstrap: [AppComponent]
