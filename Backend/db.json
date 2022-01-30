@@ -78,5 +78,11 @@
 			"Icon": "assets/items/regen_armor.png"
 		}
 	],
-	"characters": []
+	"characters": [],
+	"locations": [
+		{
+			"id": 0,
+			"name": "test"
+		}
+	]
 }
