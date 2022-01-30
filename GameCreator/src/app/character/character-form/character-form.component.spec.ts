@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChracaterEditViewComponent } from './chracater-edit-view.component';
+import { CharacterFormComponent } from './character-form.component';
 
-describe('ChracaterEditViewComponent', () => {
-  let component: ChracaterEditViewComponent;
-  let fixture: ComponentFixture<ChracaterEditViewComponent>;
+describe('CharacterFormComponent', () => {
+  let component: CharacterFormComponent;
+  let fixture: ComponentFixture<CharacterFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChracaterEditViewComponent ]
+      declarations: [ CharacterFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChracaterEditViewComponent);
+    fixture = TestBed.createComponent(CharacterFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

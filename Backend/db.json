@@ -73,15 +73,22 @@
   ],
   "characters": [
     {
-      "id": {
-        "value": "178202ff-d4aa-2def-274d-71847de86d49"
-      },
+      "id": "178202ff-d4aa-2def-274d-71847de86d49",
       "name": "Prinz Drelf",
       "race": 3,
       "backstory": "Once a noble prince of dwarfhood has now fallen to corruption",
       "age": 300,
       "weight": 80,
       "level": 5
+    },
+    {
+      "id": "d7280be1-613e-69b6-7827-6bd65b012670",
+      "name": "qwert",
+      "race": 2,
+      "backstory": "qwerqgqewrerqwerqwer",
+      "age": 13,
+      "weight": 444,
+      "level": 123
     }
   ]
 }

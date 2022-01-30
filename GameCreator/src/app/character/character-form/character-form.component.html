@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="mat-card container mt-3">
+        <form #form="ngForm" class="formGroup card-body">
+            <div class="row">
+                <mat-form-field class="fill col">
+                    <mat-label>Name:</mat-label>
+                    <input matInput name="Name" [(ngModel)]="character.name"/>
+                </mat-form-field>
+                <mat-form-field class="fill col">
+                    <mat-label>Race:</mat-label>
+                    <mat-select name="Race" [(ngModel)]="character.race">
+                        <mat-option *ngFor="let race of raceKeys" [value]="race">{{races[race]}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="fill col">
+                    <mat-label>Age:</mat-label>
+                    <input matInput type="number" name="Age" [(ngModel)]="character.age"/>
+                </mat-form-field>
+                <mat-form-field class="fill col">
+                    <mat-label>Weight:</mat-label>
+                    <input matInput type="number" name="Weight" [(ngModel)]="character.weight"/>
+                </mat-form-field>
+                <mat-form-field class="fill col">
+                    <mat-label>Level:</mat-label>
+                    <input matInput type="number" name="level" [(ngModel)]="character.level"/>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="fill col">
+                    <mat-label>Backstory:</mat-label>
+                    <textarea matInput name="Backstory" [(ngModel)]="character.backstory"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="btn-toolbar">
+                <button mat-icon-button class="btn btn-primary" (click)="save()">
+                    <mat-icon>save</mat-icon>
+                </button>
+                <button mat-icon-button class="btn btn-primary ml-2" (click)="cancel()">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

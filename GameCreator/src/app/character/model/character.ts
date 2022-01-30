@@ -1,23 +1,21 @@
-import { Guid } from "guid-typescript"
-
 export class Character
 {
-    id: Guid;
+    id: string;
     name: string;
     race: Race;
     backstory: string;
-    age: number;
-    weight: number;
-    level: number;
+    age: number | null;
+    weight: number | null;
+    level: number | null;
 
     constructor(
-        id: Guid,
+        id: string,
         name: string,
         race: Race,
         backstory: string,
-        age: number,
-        weight: number,
-        level: number
+        age: number | null,
+        weight: number | null,
+        level: number | null
     ) {
         this.id = id;
         this.name = name;
@@ -36,4 +34,11 @@ export enum Race
     Human,
     Dwarf,
     Dragonkin
+}
+
+export const Race2LabelMapping: Record<Race, string> = {
+    [Race.Elve]: "Elve",
+    [Race.Human]: "Human",
+    [Race.Dwarf]: "Dwarf",
+    [Race.Dragonkin]: "Dragonkin"
 }

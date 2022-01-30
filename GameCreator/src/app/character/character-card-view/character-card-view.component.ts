@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '../model/character';
 
 @Component({
@@ -8,7 +9,7 @@ import { Character } from '../model/character';
 })
 export class CharacterCardViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   @Input() character: Character | undefined;
   @Output() deleteCharacter = new EventEmitter<Character>();
@@ -19,5 +20,9 @@ export class CharacterCardViewComponent implements OnInit {
 
   executeDelete() : void {
     this.deleteCharacter.emit(this.character);
+  }
+
+  executeEdit() : void {
+    this.router.navigate(['../character-edit/'+this.character?.id], {relativeTo: this.route});
   }
 }

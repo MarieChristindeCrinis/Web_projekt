@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CharacterFormComponent } from './character/character-form/character-form.component';
 import { CharacterViewComponent } from './character/character-view/character-view.component';
 import { HomeComponent } from './home/home.component';
 import { ItemFormComponent } from './items/ui/item-form/item-form.component';
@@ -35,6 +36,14 @@ const APP_ROUTES: Routes = [
   {
     path: 'character',
     component: CharacterViewComponent
+  },
+  {
+    path: 'character-add',
+    component: CharacterFormComponent,
+  },
+  {
+    path: 'character-edit/:id',
+    component: CharacterFormComponent,
   },
   { 
     path: '**',
