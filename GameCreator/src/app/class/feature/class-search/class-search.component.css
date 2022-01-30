@@ -1,6 +1,16 @@
 .search-form {
-    background-color: #333;
+    background-color: #444;
     width: fit-content;
     padding: 20px;
     color: white;
+    width: 100%;
+    box-shadow: 5px 5px 5px #222;
+}
+
+.class-btn {
+    color: white;
+    background-color: #555;
+    width: 100%;
+    margin-top: 20px;
+    font-size: larger;
 }

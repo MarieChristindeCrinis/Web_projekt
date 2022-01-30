@@ -1,4 +1,4 @@
-<form [formGroup]="editForm" >
+<!--<form [formGroup]="editForm" >
     <div class="form-group">
       <label>ID:</label>
       <input formControlName="id" class="form-control" />
@@ -19,11 +19,14 @@
         <input formControlName="preferred_weapon" class="form-control" />
       </div>
 
-    <div class="form-group">
-      <button
-        class="btn btn-default"
-        (click)="save()">
-          Save
-      </button>
-    </div>
+    
   </form>
+  <div class="form-group">
+    <button
+      class="btn btn-default"
+      (click)="save()">
+        Save
+    </button>
+  </div>-->
+
+  <app-class-form [id]="id" (resultClass)="updateClass($event)"></app-class-form>

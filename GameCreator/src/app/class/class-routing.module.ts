@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClassEditComponent } from './feature/class-edit/class-edit.component';
 import { ClassOverviewComponent } from './ui/class-overview/class-overview.component';
 import { ClassCardComponent } from './ui/class-card/class-card.component';
+import { ClassAddComponent } from './feature/class-add/class-add.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'class-edit/:id',
         component: ClassEditComponent
+      },
+      {
+        path: 'class-add',
+        component: ClassAddComponent
       }
     ]
   }

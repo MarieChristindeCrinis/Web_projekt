@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Class } from '../../entities/Class';
+import { Class, WeaponClass } from '../../entities/Class';
 import { ClassService } from '../../service/class.service';
 
 @Component({
@@ -10,14 +10,17 @@ import { ClassService } from '../../service/class.service';
 export class ClassSearchComponent implements OnInit {
   @Output() classes = new EventEmitter<Class[]>();
   name: string;
+  weapon: string;
+  weaponClasses = Object.keys(WeaponClass).filter(value => isNaN(Number(value)));
 
-  constructor(private classService: ClassService) { }
+  constructor(private classService: ClassService) { this.weaponClasses.push('') }
 
   ngOnInit(): void {
     this.search();
   }
 
   search(): void {
+    console.log(this.weapon);
     this.classService.getClasses(
       {
         next: (classes: Class[]) => {
@@ -25,9 +28,10 @@ export class ClassSearchComponent implements OnInit {
           console.log(JSON.stringify(classes)); 
         },
         error: (err) => console.log(err),
-        complete: () => console.log('Done fetching Chars')
+        complete: () => console.log('Success')
       },
-      this.name
+      this.name,
+      this.weapon
     )
   }
 

@@ -1,0 +1,14 @@
+.class-card {
+    background-color: #444;
+    padding: 10px;
+    max-height: 100%;
+    box-shadow: 5px 5px 5px #222;
+}
+
+.class-btn {
+    color: white;
+    background-color: #555;
+    width: 30%;
+    margin-left: 10px;
+    font-size: larger;
+}

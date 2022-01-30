@@ -5,9 +5,9 @@
       "Identifier": "8beccd9c-e062-f8ff-bd26-4b0e2c6c1f1e",
       "Name": "Greatsword",
       "Category": 3,
-      "Rarity": 0,
-      "Price": 23,
-      "Weight": 8,
+      "Rarity": 1,
+      "Price": 50,
+      "Weight": 6,
       "Icon": "assets/items/greatsword.png"
     },
     {
@@ -53,7 +53,7 @@
     {
       "id": 5,
       "Identifier": "f0d5f1e4-03c4-be3d-302d-e84fff1ba89d",
-      "Name": "Iron Chestplate",
+      "Name": "Icon Chestplate",
       "Category": 2,
       "Rarity": 0,
       "Price": 100,
@@ -69,42 +69,39 @@
       "Price": 2500,
       "Weight": 40,
       "Icon": "assets/items/regen_armor.png"
-    },
-    {
-      "Identifier": "0ed818e8-9a20-88c9-4ef2-978a5973c0c3",
-      "Name": "Bow",
-      "Category": 4,
-      "Rarity": 0,
-      "Price": 15,
-      "Weight": 2.3,
-      "Icon": "",
-      "id": 7
     }
   ],
   "characters": [
     {
-      "id": "178202ff-d4aa-2def-274d-71847de86d49",
+      "id": {
+        "value": "178202ff-d4aa-2def-274d-71847de86d49"
+      },
       "name": "Prinz Drelf",
       "race": 3,
       "backstory": "Once a noble prince of dwarfhood has now fallen to corruption",
-      "age": 400,
+      "age": 300,
       "weight": 80,
       "level": 5
-    },
-    {
-      "id": "2338aac5-8aaa-b7eb-8524-aa0ffddd9245",
-      "name": "Egor der Müffelnde",
-      "race": 2,
-      "backstory": "Stinkender Zwerg der mit seinem Gestank die Gegener vertreibt, aber leider gleichzeitig der schlechteste Rouge ist wo gibt, schwöre.",
-      "age": 70,
-      "weight": 1000,
-      "level": 3
     }
   ],
-  "locations": [
+  "classes": [
     {
-      "id": 0,
-      "name": "test"
+      "id": 1,
+      "name": "Warrior",
+      "description": "A strong and mighty warrior skilled in handling numerous blades!",
+      "preferred_weapon": "Sword"
+    },
+    {
+      "id": 2,
+      "name": "Archer",
+      "description": "Archers are Experts in long range combat with their trusty bows",
+      "preferred_weapon": "Bow"
+    },
+    {
+      "name": "Tank",
+      "description": "With heavy armor and many many lifepoints the Tank is a wall for their Allies and creates fear in their Enemies!",
+      "preferred_weapon": "Shield",
+      "id": 3
     }
   ]
 }

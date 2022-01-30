@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClassCardComponent } from './ui/class-card/class-card.component';
 import { ClassEditComponent } from './feature/class-edit/class-edit.component';
 import { ClassRoutingModule } from './class-routing.module';
+import { ClassFormComponent } from './feature/class-form/class-form.component';
+import { ClassAddComponent } from './feature/class-add/class-add.component';
 
 
 
@@ -14,7 +16,9 @@ import { ClassRoutingModule } from './class-routing.module';
     ClassOverviewComponent,
     ClassSearchComponent,
     ClassCardComponent,
-    ClassEditComponent
+    ClassEditComponent,
+    ClassFormComponent,
+    ClassAddComponent
   ],
   imports: [
     CommonModule,

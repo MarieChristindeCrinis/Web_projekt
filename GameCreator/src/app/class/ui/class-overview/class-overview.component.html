@@ -1,10 +1,17 @@
 <div class="classcontent">
-
-    <h1 class="header selected-header">Character Overview:</h1>
+<div style="padding: 10px;">
+    <h1 class="header selected-header">Classes Overview</h1>
     <app-class-search (classes)="updateClasses($event)"></app-class-search>
 
+    <a
+    class="btn btn-default class-btn"
+    [routerLink]="['class-add']">Add a new Class</a>
+</div>
+    <div class="card-view">
     <div *ngFor="let class of classes">
         <app-class-card
-           [item]="class"></app-class-card>
+           [item]="class"
+           (removed)="removeClass($event)"></app-class-card>
     </div>
+</div>
 </div>

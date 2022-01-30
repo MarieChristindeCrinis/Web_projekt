@@ -21,4 +21,8 @@ export class ClassOverviewComponent implements OnInit {
     this.classes = newClasses;
   }
 
+  removeClass(id: number): void {
+    this.classes = this.classes.filter(filterClass => filterClass.id != id);
+  }
+
 }

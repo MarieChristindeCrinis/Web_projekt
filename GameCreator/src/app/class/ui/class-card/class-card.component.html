@@ -1,7 +1,9 @@
-<div>
+<div class="class-card">
     <h1>{{item?.name}}</h1>
     <p>{{item?.description}}</p>
-    <a
-    class="btn btn-default"
-    [routerLink]="['class-edit', item?.id]">Edit</a>
+    <hr>
+    <p>Weapon of choice: {{item?.preferred_weapon}}</p>
+    <hr>
+    <a class="btn btn-default class-btn" [routerLink]="['class-edit', item?.id]">Edit</a>
+    <button class="btn btn-default class-btn" (click)="removeClass()">Remove</button>
 </div>
