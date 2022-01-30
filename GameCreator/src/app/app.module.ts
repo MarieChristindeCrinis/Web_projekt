@@ -57,11 +57,8 @@ import { LocationModule } from './location/location.module';
     MatTooltipModule,
     MatSelectModule,
     AppRoutingModule,
-<<<<<<< HEAD
-    ClassModule
-=======
+    ClassModule,
     LocationModule,
->>>>>>> 7bc64abd87d0df40c0067be9b2938d3abe968b10
   ],
   providers: [],
   bootstrap: [AppComponent]
