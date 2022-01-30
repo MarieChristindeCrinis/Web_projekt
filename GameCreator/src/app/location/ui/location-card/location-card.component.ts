@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Location } from '../../../entities/location';
 
 @Component({
@@ -8,6 +8,9 @@ import { Location } from '../../../entities/location';
 })
 export class LocationCardComponent implements OnInit {
   @Input() locationItem: Location | undefined;
+  @Input() selected: boolean = false;
+  @Output() selectedChanged = new EventEmitter();
+
 
   constructor() { }
 

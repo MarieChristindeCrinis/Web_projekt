@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Location } from './entities/location';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,4 @@ import { Location } from './entities/location';
 })
 export class AppComponent {
   title = 'GameCreator';
-
-  currentLocationItem: Location | undefined;
 }

@@ -69,43 +69,22 @@
       "Price": 2500,
       "Weight": 40,
       "Icon": "assets/items/regen_armor.png"
-    },
-    {
-      "Identifier": "c11ccda0-1b32-7bd4-4f6e-cf097cc018f1",
-      "Name": "Bow",
-      "Category": 4,
-      "Rarity": 0,
-      "Price": 25,
-      "Weight": 2.5,
-      "Icon": "",
-      "id": 7
-    },
-    {
-      "Identifier": "1276f5bd-d9a0-b0a2-2da1-a07d5c6dd15d",
-      "Name": "Legendary Bow",
-      "Category": 4,
-      "Rarity": 4,
-      "Price": 1500,
-      "Weight": 3.7,
-      "Icon": "",
-      "id": 8
-    },
-    {
-      "Identifier": "29ecb19c-ff9e-be8d-c349-7ba6d80b2cd9",
-      "Name": "Shortsword",
-      "Category": {
-        "Value": 3,
-        "FormattedValue": "Melee Weapon"
-      },
-      "Rarity": {
-        "Value": 0,
-        "FormattedValue": "Common"
-      },
-      "Price": 12,
-      "Weight": 2,
-      "Icon": "",
-      "id": 9
     }
   ],
-  "characters": []
+  "characters": [
+  {
+      "name": "Prinz Drelf",
+      "race": 3,
+      "backstory": "Once a noble prince of dwarfhood has now fallen to corruption",
+      "age": 300,
+      "weight": 80,
+      "level": 5
+    }
+  ],
+  "locations": [
+    {
+      "id": 0,
+      "name": "test"
+    }
+  ]
 }
