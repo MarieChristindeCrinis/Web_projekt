@@ -26,31 +26,28 @@ export class CharacterFormComponent implements OnInit {
         this.character = new Character(Guid.create().toString(), '', 0, '', null, null, null);
     }
     else {
-      console.log('fetching char');
       this.characterService.getCharacter({
         next: (char: Character[]) => {
-          console.log(char);
           this.character = char[0];
         },
-        complete: () => console.log('done'),
+        complete: () => {},
         error: (err) => console.log(err),
       }, routeId);
     }
   }
 
   save(): void {
-    console.log('In Save Method');
     if(this.dialogMode === 'add') {
       this.characterService.postCharacter(this.character, {
         next: (char: Character) => this.router.navigate(['../character'], {relativeTo: this.route}),
-        complete: () => console.log('done'),
+        complete: () => {},
         error: (err) => console.log(err),
       });
     }
     else {
       this.characterService.updateCharacter(this.character, {
         next: (char: Character) => this.router.navigate(['../../character'], {relativeTo: this.route}),
-        complete: () => console.log('done'),
+        complete: () => {},
         error: (err) => console.log(err),
       })
     }
