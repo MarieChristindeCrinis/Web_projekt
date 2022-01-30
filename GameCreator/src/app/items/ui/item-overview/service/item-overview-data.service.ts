@@ -3,7 +3,6 @@ import { map, Observable } from 'rxjs';
 import { IItemModel } from '../../../model/IItemModel';
 import { ItemRarity } from '../../../model/Rarity';
 import { ItemQueryService } from '../../../query-service/item-query.service';
-import { ItemTableViewModel } from '../view-model/ItemTableViewModel';
 import { ItemCategory } from '../../../model/ItemCategory';
 import { IItemViewModel } from '../../view-model/IItemViewModel';
 import { ItemCardViewModel } from '../../item-card/view-model/ItemCardViewModel';
@@ -24,10 +23,10 @@ export class ItemOverviewDataService {
   {
     return this.mQueryService
       .AvailableItems
-      .pipe(map(x => x.map(x => this._ConvertToTableViewModel(x))));
+      .pipe(map(x => x.map(x => this._ConvertToCardViewModel(x))));
   }
 
-  private _ConvertToTableViewModel(item: IItemModel) : ItemCardViewModel
+  private _ConvertToCardViewModel(item: IItemModel) : ItemCardViewModel
   {
     return new ItemCardViewModel(
       item.Id,
