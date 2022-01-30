@@ -5,6 +5,7 @@ import { Guid } from 'guid-typescript';
 
 export interface IItemModel
 {
+  DbId: number | undefined;
   Id: Guid;
   Name: string;
   Category: ItemCategory;

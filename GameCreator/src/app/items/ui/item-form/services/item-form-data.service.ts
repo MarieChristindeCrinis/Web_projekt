@@ -2,14 +2,42 @@ import { Injectable } from '@angular/core';
 import { ItemCategory } from '../../../model/ItemCategory';
 import { ItemRarity } from '../../../model/Rarity';
 import { SelectorItemViewModel } from '../view-model/SelectorItemViewModel';
+import { ItemModel } from '../../../model/ItemModel';
+import { Guid } from 'guid-typescript';
+import { ItemStorageService } from '../../../storage/item-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemFormDataService
 {
+  private mItemStorageService: ItemStorageService;
 
-  constructor() { }
+  constructor(itemStorageService: ItemStorageService)
+  {
+    this.mItemStorageService = itemStorageService;
+  }
+
+  public async StoreItem(
+    id: Guid | undefined,
+    name: string,
+    category: SelectorItemViewModel<ItemCategory>,
+    rarity: SelectorItemViewModel<ItemRarity>,
+    price: string,
+    weight: string
+  ) : Promise<boolean>
+  {
+    const item = new ItemModel(
+      id ?? Guid.create(),
+      name,
+      category.Value,
+      rarity.Value,
+      parseFloat(price),
+      parseFloat(weight),
+      '');
+
+    return await this.mItemStorageService.StoreItemModel(item);
+  }
 
   public GetItemCategories() : SelectorItemViewModel<ItemCategory>[]
   {

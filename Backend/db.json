@@ -1,82 +1,95 @@
 {
-	"items": [
-		{
-			"Id": {
-				"value": "8beccd9c-e062-f8ff-bd26-4b0e2c6c1f1e"
-			},
-			"Name": "Greatsword",
-			"Category": 3,
-			"Rarity": 1,
-			"Price": 50,
-			"Weight": 6,
-			"Icon": "assets/items/greatsword.png"
-		},
-		{
-			"Id": {
-				"value": "fe7648b6-419a-7fde-fa2c-25533bbb323e"
-			},
-			"Name": "Longsword",
-			"Category": 3,
-			"Rarity": 0,
-			"Price": 15,
-			"Weight": 3,
-			"Icon": "assets/items/longsword.png"
-		},
-		{
-			"Id": {
-				"value": "29ecb19c-ff9e-be8d-c349-7ba6d80b2cd9"
-			},
-			"Name": "Shortsword",
-			"Category": 3,
-			"Rarity": 0,
-			"Price": 10,
-			"Weight": 2,
-			"Icon": "assets/items/shortsword.png"
-		},
-		{
-			"Id": {
-				"value": "94a7123c-4453-83b0-e578-d272c727d948"
-			},
-			"Name": "Leather Tunic",
-			"Category": 0,
-			"Rarity": 0,
-			"Price": 50,
-			"Weight": 20,
-			"Icon": "assets/items/leather.png"
-		},
-		{
-			"Id": {
-				"value": "d989268f-b1ee-a684-49f1-069ed62d8e02"
-			},
-			"Name": "Padded Leather Tunic",
-			"Category": 0,
-			"Rarity": 1,
-			"Price": 350,
-			"Weight": 30,
-			"Icon": "assets/items/padded.png"
-		},
-		{
-			"Id": {
-				"value": "f0d5f1e4-03c4-be3d-302d-e84fff1ba89d"
-			},
-			"Name": "Icon Chestplate",
-			"Category": 2,
-			"Rarity": 0,
-			"Price": 100,
-			"Weight": 80,
-			"Icon": "assets/items/iron.png"
-		},
-		{
-			"Id": {
-				"value": "17820289-d4aa-2def-274d-71847de86d49"
-			},
-			"Name": "Magical Chestplate of Nature",
-			"Category": 1,
-			"Rarity": 3,
-			"Price": 2500,
-			"Weight": 40,
-			"Icon": "assets/items/regen_armor.png"
-		}
-	],
-	"characters": []
+  "items": [
+    {
+      "id": 0,
+      "Identifier": "8beccd9c-e062-f8ff-bd26-4b0e2c6c1f1e",
+      "Name": "Greatsword",
+      "Category": 3,
+      "Rarity": 1,
+      "Price": 50,
+      "Weight": 6,
+      "Icon": "assets/items/greatsword.png"
+    },
+    {
+      "id": 1,
+      "Identifier": "fe7648b6-419a-7fde-fa2c-25533bbb323e",
+      "Name": "Longsword",
+      "Category": 3,
+      "Rarity": 0,
+      "Price": 15,
+      "Weight": 3,
+      "Icon": "assets/items/longsword.png"
+    },
+    {
+      "id": 2,
+      "Identifier": "29ecb19c-ff9e-be8d-c349-7ba6d80b2cd9",
+      "Name": "Shortsword",
+      "Category": 3,
+      "Rarity": 0,
+      "Price": 10,
+      "Weight": 2,
+      "Icon": "assets/items/shortsword.png"
+    },
+    {
+      "id": 3,
+      "Identifier": "94a7123c-4453-83b0-e578-d272c727d948",
+      "Name": "Leather Tunic",
+      "Category": 0,
+      "Rarity": 0,
+      "Price": 50,
+      "Weight": 20,
+      "Icon": "assets/items/leather.png"
+    },
+    {
+      "id": 4,
+      "Identifier": "d989268f-b1ee-a684-49f1-069ed62d8e02",
+      "Name": "Padded Leather Tunic",
+      "Category": 0,
+      "Rarity": 1,
+      "Price": 350,
+      "Weight": 30,
+      "Icon": "assets/items/padded.png"
+    },
+    {
+      "id": 5,
+      "Identifier": "f0d5f1e4-03c4-be3d-302d-e84fff1ba89d",
+      "Name": "Icon Chestplate",
+      "Category": 2,
+      "Rarity": 0,
+      "Price": 100,
+      "Weight": 80,
+      "Icon": "assets/items/iron.png"
+    },
+    {
+      "id": 6,
+      "Identifier": "17820289-d4aa-2def-274d-71847de86d49",
+      "Name": "Magical Chestplate of Nature",
+      "Category": 1,
+      "Rarity": 3,
+      "Price": 2500,
+      "Weight": 40,
+      "Icon": "assets/items/regen_armor.png"
+    },
+    {
+      "Identifier": "c11ccda0-1b32-7bd4-4f6e-cf097cc018f1",
+      "Name": "Bow",
+      "Category": 4,
+      "Rarity": 0,
+      "Price": 25,
+      "Weight": 2.5,
+      "Icon": "",
+      "id": 7
+    },
+    {
+      "Identifier": "1276f5bd-d9a0-b0a2-2da1-a07d5c6dd15d",
+      "Name": "Legendary Bow",
+      "Category": 4,
+      "Rarity": 4,
+      "Price": 1500,
+      "Weight": 3.7,
+      "Icon": "",
+      "id": 8
+    }
+  ],
+  "characters": []
 }

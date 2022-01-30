@@ -4,6 +4,7 @@ import { IItemViewModel } from '../../view-model/IItemViewModel';
 
 export class ItemTableViewModel implements IItemViewModel
 {
+  Id: Guid;
   RuntimeId: Guid;
   Name: string;
   Category: string;
@@ -14,6 +15,7 @@ export class ItemTableViewModel implements IItemViewModel
   CategoryIcon: string;
 
   constructor(
+    id: Guid,
     name: string,
     category: string,
     rarity: string,
@@ -22,6 +24,7 @@ export class ItemTableViewModel implements IItemViewModel
     icon: string,
     categoryIcon: string)
   {
+      this.Id = id;
       this.RuntimeId = Guid.create();
       this.Name = name;
       this.Category = category;
