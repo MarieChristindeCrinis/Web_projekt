@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ServerLocationService } from 'src/app/shared/server-location/server-location.service';
 import { IItemModel } from '../model/IItemModel';
 import { IStorageItemModel } from '../model/IStorageItemModel';
-import { StorageItemModdel } from '../model/StorageItemModel';
+import { StorageItemModel } from '../model/StorageItemModel';
 import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -58,9 +58,27 @@ export class ItemStorageService {
     }
   }
 
+  public async DeleteItem(item: IItemModel) : Promise<boolean>
+  {
+    const request = this.mHttpService.delete(
+      this.mServerLocationProvider.ServerLocation+'items/'+item.DbId,
+    );
+
+    try
+    {
+      const result = await firstValueFrom(request);
+      return true;
+    }
+    catch(error)
+    {
+      console.log(`Error during save of Item ${item.Name}:\n ${error}`);
+      return false;
+    }
+  }
+
   private _ConvertToStorageModel(item: IItemModel) : IStorageItemModel
   {
-    return new StorageItemModdel(
+    return new StorageItemModel(
       item.DbId,
       item.Id.toString(),
       item.Name,

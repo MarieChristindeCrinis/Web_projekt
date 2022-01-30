@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 import { ItemRarity } from '../../model/Rarity';
-import { SelectorItemViewModel } from '../../ui/item-form/view-model/SelectorItemViewModel';
+import { SelectorItemViewModel } from '../../ui/view-model/SelectorItemViewModel';
 
 
 export const PriceValidator =  (rarityProvider : () => SelectorItemViewModel<ItemRarity>) : ValidatorFn =>

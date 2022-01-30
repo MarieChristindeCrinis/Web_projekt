@@ -13,19 +13,19 @@ export class ItemCardComponent {
   public Item: IItemViewModel;
 
   @Output()
-  public AddItem: EventEmitter<IItemViewModel>;
+  public DeleteItem: EventEmitter<IItemViewModel>;
 
   private mRouter: Router;
 
   constructor(router: Router)
   {
     this.mRouter = router;
-    this.AddItem = new EventEmitter<IItemViewModel>();
+    this.DeleteItem = new EventEmitter<IItemViewModel>();
   }
 
-  public OnAddClicked()
+  public OnDeleteClicked()
   {
-    this.AddItem.emit(this.Item);
+    this.DeleteItem.emit(this.Item);
   }
 
   public OnEditClicked()

@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ItemFormDataService } from './services/item-form-data.service';
-import { SelectorItemViewModel } from './view-model/SelectorItemViewModel';
+import { SelectorItemViewModel } from '../view-model/SelectorItemViewModel';
 import { ItemCategory } from '../../model/ItemCategory';
 import { ItemRarity } from '../../model/Rarity';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -63,15 +63,20 @@ export class ItemFormComponent implements OnDestroy{
               const guid = Guid.parse(id as string);
               this.Item = await this.mDataService.GetItem(guid);
               this.NameControl.setValue(this.Item.Name);
-              this.CategoryControl.setValue(this.Item.Category);
-              this.RarityControl.setValue(this.Item.Rarity);
+              this.CategoryControl.setValue(this.Item.Category.Value);
+              this.RarityControl.setValue(this.Item.Rarity.Value);
               this.PriceControl.setValue(this.Item.Price);
               this.WeightControl.setValue(this.Item.Weight);
             }));
 
       this.mSubscriptions.push(
         this.RarityControl.valueChanges
-          .subscribe(_ => this.PriceControl.updateValueAndValidity()));
+        .pipe(filter(_ => this.PriceControl.value))
+          .subscribe(_ =>
+            {
+              this.PriceControl.updateValueAndValidity();
+              this.PriceControl.markAllAsTouched();
+            }));
   }
 
   ngOnDestroy(): void
@@ -117,6 +122,11 @@ export class ItemFormComponent implements OnDestroy{
   private _GetRarity() : SelectorItemViewModel<ItemRarity>
   {
     const value = this.RarityControl.value;
+    const selectorVM = value as SelectorItemViewModel<ItemRarity>;
+    if(selectorVM?.Value === undefined && this.AvailableRarities !== undefined)
+    {
+      return this.AvailableRarities.filter(x => x.Value === value)[0];
+    }
     return value;
   }
 
