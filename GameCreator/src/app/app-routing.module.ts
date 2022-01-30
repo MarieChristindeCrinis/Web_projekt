@@ -3,16 +3,42 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ItemFormComponent } from './items/ui/item-form/item-form.component';
 import { ItemOverviewComponent } from './items/ui/item-overview/item-overview.component';
+import { LocationCardComponent } from './location/ui/location-card/location-card.component';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'items', component: ItemOverviewComponent },
-  { path: 'item-create', component: ItemFormComponent },
-  { path: 'item-edit/:id', component: ItemFormComponent}
+const APP_ROUTES: Routes = [
+  { 
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  { 
+    path: 'home',
+    component: HomeComponent
+  },
+  { 
+    path: 'items', 
+    component: ItemOverviewComponent
+  },
+  { 
+    path: 'item-create', 
+    component: ItemFormComponent 
+  },
+  { 
+    path: 'item-edit/:id', 
+    component: ItemFormComponent
+  },
+  { 
+    path: 'location', 
+    component: LocationCardComponent
+  },
+  { 
+    path: '**',
+    redirectTo: 'home'
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(APP_ROUTES)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
