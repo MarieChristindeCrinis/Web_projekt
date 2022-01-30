@@ -1,8 +1,10 @@
+import { Guid } from 'guid-typescript';
 import { IItemViewModel } from '../../view-model/IItemViewModel';
 
 
 export class ItemCardViewModel implements IItemViewModel
 {
+  Id: Guid;
   Name: string;
   Category: string;
   Rarity: string;
@@ -12,6 +14,7 @@ export class ItemCardViewModel implements IItemViewModel
   CategoryIcon: string;
 
   constructor(
+    id: Guid,
     name: string,
     category: string,
     rarity: string,
@@ -20,6 +23,7 @@ export class ItemCardViewModel implements IItemViewModel
     icon: string,
     categoryIcon: string)
   {
+      this.Id = id;
       this.Name = name;
       this.Category = category;
       this.Rarity = rarity;

@@ -30,6 +30,7 @@ export class ItemOverviewDataService {
   private _ConvertToTableViewModel(item: IItemModel) : ItemCardViewModel
   {
     return new ItemCardViewModel(
+      item.Id,
       item.Name,
       this._FormatCategory(item.Category),
       ItemRarity[item.Rarity],

@@ -8,6 +8,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { NumericValidations } from '../../shared/validation/NumericValidator';
 import { PriceValidator } from '../../shared/validation/PriceValidator';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-form',
@@ -30,13 +31,18 @@ export class ItemFormComponent implements OnDestroy{
   public Form: FormGroup;
 
   private mSubscriptions: Subscription[];
+  private mDataService : ItemFormDataService;
+  private mRouter: Router;
 
   constructor(
-    dataProvider: ItemFormDataService,
-    formBuilder: FormBuilder )
+    dataService: ItemFormDataService,
+    formBuilder: FormBuilder,
+    router: Router)
   {
-      this.AvailableCategories = dataProvider.GetItemCategories();
-      this.AvailableRarities = dataProvider.GetItemRarities();
+      this.mRouter = router;
+      this.mDataService = dataService;
+      this.AvailableCategories = dataService.GetItemCategories();
+      this.AvailableRarities = dataService.GetItemRarities();
       this.mSubscriptions = [];
 
       this.Form = formBuilder.group([
@@ -97,7 +103,7 @@ export class ItemFormComponent implements OnDestroy{
     return value;
   }
 
-  public OnSaveClicked()
+  public async OnSaveClicked() : Promise<void>
   {
     Object.keys(this.Form.controls)
       .forEach(field =>
@@ -115,7 +121,23 @@ export class ItemFormComponent implements OnDestroy{
       const rarity = this.RarityControl.value;
       const price = this.PriceControl.value;
       const weight = this.WeightControl.value;
-      alert('Valid Form');
+
+      const result = await this.mDataService.StoreItem(
+        this.Item?.Id,
+        name,
+        category,
+        rarity,
+        price,
+        weight);
+
+        if(result)
+        {
+          this.mRouter.navigate(['/items'])
+        }
+        else
+        {
+          alert('Storing failed');
+        }
     }
   }
 }
