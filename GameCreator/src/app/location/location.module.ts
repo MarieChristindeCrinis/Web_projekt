@@ -20,6 +20,8 @@ import { LocationOverviewComponent } from './ui/location-overview/location-overv
     LocationOverviewComponent,
   ],
   providers: [
+    CommonModule,
+    LocationRoutingModule,
     LocationService
   ],
   imports: [

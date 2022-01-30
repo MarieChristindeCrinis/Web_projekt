@@ -1,5 +1,6 @@
 <div class="content">
-    <h1 class="header">Location</h1>
+    <h1 class="card">Location</h1>
+    
     <app-location-search (locations)="updateLocations($event)"></app-location-search>
     
     <div *ngFor="let location of locations">

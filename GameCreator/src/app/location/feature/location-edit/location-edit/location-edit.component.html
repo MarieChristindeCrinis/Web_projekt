@@ -1,1 +1,83 @@
-<p>location-edit works!</p>
+<div class="card">
+    <div class="header">
+      <h2 class="title">Edit the selected location</h2>
+    </div>
+    <div class="content">
+  
+      <form  >
+        <div class="form-group">
+          <label>ID:</label>
+          <input formControlName="id" class="form-control" />
+        </div>
+  
+        <div class="form-group">
+          <label>Name:</label>
+          <input formControlName="name" class="form-control" />
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="editForm.controls['name'].hasError('required')">
+          This is a mandatory input field!
+        </div>
+
+        <div class="form-group">
+            <label>Biome type</label>
+            <input formControlName="biome_types" class="form-control" />
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="editForm.controls['biome_types'].hasError('required')">
+            This is a mandatory input field!
+          </div>
+  
+        <div class="form-group">
+          <label>Biome size</label>
+          <input formControlName="biome_size" class="form-control" />
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="editForm.controls['biome_size'].hasError('required')">
+          This is a mandatory input field!
+        </div>
+        
+        <div class="form-group">
+            <label>Day-Night-Cycle</label>
+            <input formControlName="day_night_cycle" class="form-control" />
+          </div>
+        <div
+            class="alert alert-danger"
+            *ngIf="editForm.controls['day_night_cycle'].hasError('required')">
+            This is a mandatory input field!
+        </div>
+  
+          <div class="form-group">
+            <label>Weather-Cycle</label>
+            <input formControlName="weather_cycle" class="form-control" />
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="editForm.controls['weather_cycle'].hasError('required')">
+            This is a mandatory input field!
+          </div>
+
+          <div class="form-group">
+            <label>Npc-Density</label>
+            <input formControlName="npc_density" class="form-control" />
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="editForm.controls['npc_density'].hasError('required')">
+            This is a mandatory input field!
+          </div>
+  
+        <div class="form-group">
+          <button
+            class="btn btn-default"
+            (click)="save()">
+              Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

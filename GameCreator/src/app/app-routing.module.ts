@@ -7,6 +7,8 @@ import { ClassOverviewComponent } from './class/ui/class-overview/class-overview
 import { HomeComponent } from './home/home.component';
 import { ItemFormComponent } from './items/ui/item-form/item-form.component';
 import { ItemOverviewComponent } from './items/ui/item-overview/item-overview.component';
+import { LocationEditComponent } from './location/feature/location-edit/location-edit/location-edit.component';
+import { LocationOverviewComponent } from './location/ui/location-overview/location-overview/location-overview.component';
 
 const APP_ROUTES: Routes = [
   { 
@@ -32,8 +34,11 @@ const APP_ROUTES: Routes = [
   },
   { 
     path: 'location', 
-    loadChildren: () => import('./location/location.module')
-      .then(esm => esm.LocationModule)
+    component: LocationOverviewComponent
+  },
+  {
+    path: 'location-edit/:id', 
+    component: LocationEditComponent
   },
   {
     path: 'character',

@@ -27,17 +27,3 @@ export class ValidatorDirective implements Validator {
   constructor() { }
 
 }
-
-// export function validateName(this: any, control: AbstractControl): ValidationErrors | null {
-//   const validLocationNames: string[] = [ 'test' ];
-
-//   if(control.value && !this.validLocationNames.includes(control.value)) {
-//     return {
-//       name: {
-//         validNames: this.validLocationNames,
-//         actualLocationNames: control.value
-//       }
-//     };        
-//   }
-//   return null;
-// }
