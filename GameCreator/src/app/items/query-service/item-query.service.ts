@@ -6,6 +6,7 @@ import { ServerLocationService } from 'src/app/shared/server-location/server-loc
 import { IStorageItemModel } from '../model/IStorageItemModel';
 import { ItemModel } from '../model/ItemModel';
 import { Guid } from 'guid-typescript';
+import { QueryFilter } from './filter/QueryFilter';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,14 @@ export class ItemQueryService {
   {
     return this.mHttpClient.get<IStorageItemModel[]>(this.mServerLocationProvider.ServerLocation + 'items?Identifier=' + id.toString())
       .pipe(map(item => this._ConvertToRuntimeModel(item[0])));
+  }
+
+  public QueryItems(queryFilters: QueryFilter[]) : Observable<IItemModel[]>
+  {
+    const filter = queryFilters.map(x => x.GenerateQuery()).join('&');
+
+    return this.mHttpClient.get<IStorageItemModel[]>(this.mServerLocationProvider.ServerLocation + 'items?' + filter)
+      .pipe(map(items => items.map(x => this._ConvertToRuntimeModel(x))));
   }
 
   private _ConvertToRuntimeModel(storageModel: IStorageItemModel)

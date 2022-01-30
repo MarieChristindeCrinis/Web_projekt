@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ItemFormDataService } from './services/item-form-data.service';
-import { SelectorItemViewModel } from './view-model/SelectorItemViewModel';
+import { SelectorItemViewModel } from '../view-model/SelectorItemViewModel';
 import { ItemCategory } from '../../model/ItemCategory';
 import { ItemRarity } from '../../model/Rarity';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';

@@ -1,7 +1,7 @@
 import { Guid } from 'guid-typescript';
 import { ItemCategory } from '../../../model/ItemCategory';
 import { ItemRarity } from '../../../model/Rarity';
-import { SelectorItemViewModel } from './SelectorItemViewModel';
+import { SelectorItemViewModel } from '../../view-model/SelectorItemViewModel';
 
 export class ItemFormViewModel
 {

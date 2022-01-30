@@ -1,4 +1,28 @@
-<div class="container">
+<div class="item-container">
+
+  <mat-toolbar>
+    <mat-form-field class="search-field" appearance="fill">
+      <mat-label>Search Items</mat-label>
+      <input matInput type="text" [(ngModel)]="SearchText" (ngModelChange)="TriggerFilterChanged($event)">
+      <button *ngIf="SearchText" matSuffix mat-icon-button aria-label="Clear" (click)="SearchText=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select multiple [(ngModel)]="SelectedCategories" (ngModelChange)="TriggerFilterChanged($event)">
+        <mat-option *ngFor="let category of AvailableCategories" [value]="category">{{category.FormattedValue}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Rarity</mat-label>
+      <mat-select multiple [(ngModel)]="SelectedRarities" (ngModelChange)="TriggerFilterChanged($event)">
+        <mat-option *ngFor="let rarity of AvailableRarities" [value]="rarity">{{rarity.FormattedValue}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-toolbar>
 
   <div class="item-card-container">
     <div *ngFor="let item of AvailableItems">

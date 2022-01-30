@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ItemCategory } from '../../../model/ItemCategory';
 import { ItemRarity } from '../../../model/Rarity';
-import { SelectorItemViewModel } from '../view-model/SelectorItemViewModel';
+import { SelectorItemViewModel } from '../../view-model/SelectorItemViewModel';
 import { ItemModel } from '../../../model/ItemModel';
 import { Guid } from 'guid-typescript';
 import { ItemStorageService } from '../../../storage/item-storage.service';
 import { ItemQueryService } from '../../../query-service/item-query.service';
 import { ItemFormViewModel } from '../view-model/ItemFormViewModel';
 import { firstValueFrom } from 'rxjs';
+import { ItemCategoriesProviderService } from '../../services/item-categories-provider.service';
+import { ItemRaritiesProviderService } from '../../services/item-rarities-provider.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +18,19 @@ export class ItemFormDataService
 {
   private mItemStorageService: ItemStorageService;
   private mItemQueryService: ItemQueryService;
+  private mItemCategoriesProvider: ItemCategoriesProviderService;
+  private mItemRaritiesProvider: ItemRaritiesProviderService;
 
   constructor(
     itemStorageService: ItemStorageService,
-    itemQueryService: ItemQueryService)
+    itemQueryService: ItemQueryService,
+    itemRaritiesProvider: ItemRaritiesProviderService,
+    itemCategoriesProvider: ItemCategoriesProviderService)
   {
     this.mItemQueryService = itemQueryService;
     this.mItemStorageService = itemStorageService;
+    this.mItemCategoriesProvider = itemCategoriesProvider;
+    this.mItemRaritiesProvider = itemRaritiesProvider;
   }
 
   public async StoreItem(
@@ -75,14 +83,12 @@ export class ItemFormDataService
 
   public GetItemCategories() : SelectorItemViewModel<ItemCategory>[]
   {
-    return this._GetItemCategories()
-      .map(category => new SelectorItemViewModel<ItemCategory>(category, this._FormatCategory(category)));
+    return this.mItemCategoriesProvider.GetItemCategories();
   }
 
   public GetItemRarities() : SelectorItemViewModel<ItemRarity>[]
   {
-    return this._GetItemRarities()
-      .map(rarity => new SelectorItemViewModel<ItemRarity>(rarity, ItemRarity[rarity]));
+    return this.mItemRaritiesProvider.GetItemRarities();
   }
 
   private _FormatCategory(category: ItemCategory) : string
@@ -95,27 +101,5 @@ export class ItemFormDataService
       case ItemCategory.RangedWeapon: return 'Ranged Weapon';
       case ItemCategory.MeleeWeapon: return 'Melee Weapon';
     }
-  }
-
-  private _GetItemCategories() : ItemCategory[]
-  {
-    return [
-      ItemCategory.MeleeWeapon,
-      ItemCategory.RangedWeapon,
-      ItemCategory.LightArmor,
-      ItemCategory.MediumArmor,
-      ItemCategory.HeavyArmor
-    ];
-  }
-
-  private _GetItemRarities() : ItemRarity[]
-  {
-    return [
-      ItemRarity.Common,
-      ItemRarity.Uncommon,
-      ItemRarity.Rare,
-      ItemRarity.Epic,
-      ItemRarity.Legendary
-    ];
   }
 }

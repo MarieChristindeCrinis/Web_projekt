@@ -12,9 +12,30 @@ $accent: mat-color($app-accent);
 $accent_2: mat-color($app-accent, 700);
 $warn: mat-color($app-warn);
 
-.container {
+.item-container {
   width: 100%;
   height: 100%;
+}
+
+mat-toolbar {
+  margin-top: 1%;
+  margin-left: 10%;
+  width: 80%;
+
+  font-size: 14px;
+
+  background-color: #424242;
+}
+
+mat-form-field {
+  height: 80%;
+  min-width: 200px;
+
+  margin: 0px 10px;
+}
+
+.search-field {
+  width: 30%;
 }
 
 .item-card-container {

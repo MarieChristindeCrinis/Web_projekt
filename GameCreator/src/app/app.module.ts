@@ -14,7 +14,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatTableModule } from '@angular/material/table';
 import { HomeComponent } from './home/home.component';
 import { MatRippleModule } from '@angular/material/core';
 import { ItemOverviewComponent } from './items/ui/item-overview/item-overview.component';
@@ -50,7 +49,6 @@ import { LocationModule } from './location/location.module';
     NgbModule,
     MatInputModule,
     MatSelectModule,
-    MatTableModule,
     MatRippleModule,
     MatCardModule,
     CharacterModule,
@@ -58,7 +56,7 @@ import { LocationModule } from './location/location.module';
     MatTooltipModule,
     MatSelectModule,
     AppRoutingModule,
-    LocationModule
+    LocationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
