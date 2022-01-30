@@ -54,7 +54,8 @@ import { MatSelectModule } from '@angular/material/select';
     CharacterModule,
     HttpClientModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
