@@ -1,1 +1,22 @@
 <p>location-search works!</p>
+<div class="card">
+    <div class="header">
+        <h2 class="title">Search Location</h2>
+    </div>
+
+    <div class="content">
+        <form>
+            <div class="form-group">
+              <label>Name:</label>
+              <input [(ngModel)]="name" name="name" required class="form-control"/>
+            </div>
+        </form>
+
+        <p>Value: {{ name }}</p>
+
+        <div class="form-group">
+            <button [disabled]="!name" (click)="search()" class="btn">Search</button>
+        </div>
+        
+    </div>
+</div>

@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ItemFormComponent } from './items/ui/item-form/item-form.component';
 import { MatSelectModule } from '@angular/material/select';
+import { LocationModule } from './location/location.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
     ItemOverviewComponent,
     HomeComponent,
     ItemCardComponent,
-    ItemFormComponent,
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +56,13 @@ import { MatSelectModule } from '@angular/material/select';
     CharacterModule,
     HttpClientModule,
     MatTooltipModule,
+<<<<<<< HEAD
     AppRoutingModule
+=======
+    MatSelectModule,
+    AppRoutingModule,
+    LocationModule
+>>>>>>> ecae3e13b94eb28c3c59690459b502f40f15d8f5
   ],
   providers: [],
   bootstrap: [AppComponent]

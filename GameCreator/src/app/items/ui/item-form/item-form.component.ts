@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ItemCardViewModel } from '../item-card/view-model/ItemCardViewModel';
 import { ItemFormDataService } from './services/item-form-data.service';
 import { SelectorItemViewModel } from './view-model/SelectorItemViewModel';
 import { ItemCategory } from '../../model/ItemCategory';
@@ -7,8 +6,10 @@ import { ItemRarity } from '../../model/Rarity';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NumericValidations } from '../../shared/validation/NumericValidator';
 import { PriceValidator } from '../../shared/validation/PriceValidator';
-import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Subscription, map, filter } from 'rxjs';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { Guid } from 'guid-typescript';
+import { ItemFormViewModel } from './view-model/ItemFormViewModel';
 
 @Component({
   selector: 'app-item-form',
@@ -17,7 +18,7 @@ import { Router } from '@angular/router';
 })
 export class ItemFormComponent implements OnDestroy{
 
-  public Item : ItemCardViewModel | undefined;
+  public Item : ItemFormViewModel | undefined;
 
   public AvailableCategories: SelectorItemViewModel<ItemCategory>[];
   public AvailableRarities: SelectorItemViewModel<ItemRarity>[];
@@ -37,7 +38,8 @@ export class ItemFormComponent implements OnDestroy{
   constructor(
     dataService: ItemFormDataService,
     formBuilder: FormBuilder,
-    router: Router)
+    router: Router,
+    activatedRoute: ActivatedRoute)
   {
       this.mRouter = router;
       this.mDataService = dataService;
@@ -51,6 +53,21 @@ export class ItemFormComponent implements OnDestroy{
       this.RarityControl,
       this.PriceControl,
       this.WeightControl]);
+
+      this.mSubscriptions.push(
+        activatedRoute.paramMap
+          .pipe(map(params => params.get('id')))
+          .pipe(filter(id => id !== null))
+          .subscribe(async id =>
+            {
+              const guid = Guid.parse(id as string);
+              this.Item = await this.mDataService.GetItem(guid);
+              this.NameControl.setValue(this.Item.Name);
+              this.CategoryControl.setValue(this.Item.Category);
+              this.RarityControl.setValue(this.Item.Rarity);
+              this.PriceControl.setValue(this.Item.Price);
+              this.WeightControl.setValue(this.Item.Weight);
+            }));
 
       this.mSubscriptions.push(
         this.RarityControl.valueChanges
@@ -124,11 +141,13 @@ export class ItemFormComponent implements OnDestroy{
 
       const result = await this.mDataService.StoreItem(
         this.Item?.Id,
+        this.Item?.DbId ?? undefined,
         name,
         category,
         rarity,
         price,
-        weight);
+        weight,
+        this.Item?.Icon ?? '');
 
         if(result)
         {

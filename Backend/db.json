@@ -5,9 +5,9 @@
       "Identifier": "8beccd9c-e062-f8ff-bd26-4b0e2c6c1f1e",
       "Name": "Greatsword",
       "Category": 3,
-      "Rarity": 1,
-      "Price": 50,
-      "Weight": 6,
+      "Rarity": 0,
+      "Price": 51,
+      "Weight": 8,
       "Icon": "assets/items/greatsword.png"
     },
     {
@@ -69,11 +69,24 @@
       "Price": 2500,
       "Weight": 40,
       "Icon": "assets/items/regen_armor.png"
+    },
+    {
+      "Identifier": "0ed818e8-9a20-88c9-4ef2-978a5973c0c3",
+      "Name": "Bow",
+      "Category": 4,
+      "Rarity": 0,
+      "Price": 15,
+      "Weight": 2.3,
+      "Icon": "",
+      "id": 7
     }
   ],
   "characters": [
     {
+<<<<<<< HEAD
       "id": "178202ff-d4aa-2def-274d-71847de86d49",
+=======
+>>>>>>> ecae3e13b94eb28c3c59690459b502f40f15d8f5
       "name": "Prinz Drelf",
       "race": 3,
       "backstory": "Once a noble prince of dwarfhood has now fallen to corruption",
@@ -89,6 +102,12 @@
       "age": 13,
       "weight": 444,
       "level": 123
+    }
+  ],
+  "locations": [
+    {
+      "id": 0,
+      "name": "test"
     }
   ]
 }
