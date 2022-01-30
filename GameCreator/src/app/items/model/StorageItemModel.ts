@@ -1,7 +1,7 @@
 import { IStorageItemModel } from './IStorageItemModel';
 
 
-export class StorageItemModdel implements IStorageItemModel
+export class StorageItemModel implements IStorageItemModel
 {
   id: number | undefined;
   Identifier: string;

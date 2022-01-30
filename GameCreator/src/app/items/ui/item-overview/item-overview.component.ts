@@ -71,4 +71,10 @@ export class ItemOverviewComponent implements OnInit, OnDestroy {
     this.AvailableItems.splice(index, 1);
     this.mItemDataService.DeleteItem(item);
   }
+
+  public ClearSearch()
+  {
+    this.SearchText = '';
+    this.TriggerFilterChanged(this.SearchText);
+  }
 }

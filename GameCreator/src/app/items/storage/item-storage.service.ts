@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ServerLocationService } from 'src/app/shared/server-location/server-location.service';
 import { IItemModel } from '../model/IItemModel';
 import { IStorageItemModel } from '../model/IStorageItemModel';
-import { StorageItemModdel } from '../model/StorageItemModel';
+import { StorageItemModel } from '../model/StorageItemModel';
 import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -78,7 +78,7 @@ export class ItemStorageService {
 
   private _ConvertToStorageModel(item: IItemModel) : IStorageItemModel
   {
-    return new StorageItemModdel(
+    return new StorageItemModel(
       item.DbId,
       item.Id.toString(),
       item.Name,
