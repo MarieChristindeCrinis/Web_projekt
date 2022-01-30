@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ItemViewModel } from '../view-model/ItemTableViewModel';
+import { IItemViewModel } from '../view-model/IItemViewModel';
 
 @Component({
   selector: 'app-item-card',
@@ -9,19 +9,19 @@ import { ItemViewModel } from '../view-model/ItemTableViewModel';
 export class ItemCardComponent {
 
   @Input()
-  public Item: ItemViewModel;
+  public Item: IItemViewModel;
 
   @Output()
-  public AddItem: EventEmitter<ItemViewModel>;
+  public AddItem: EventEmitter<IItemViewModel>;
 
   constructor()
   {
-    this.AddItem = new EventEmitter<ItemViewModel>();
+    this.AddItem = new EventEmitter<IItemViewModel>();
   }
 
   public OnAddClicked()
   {
-    this.AddItem.next(this.Item);
+    this.AddItem.emit(this.Item);
   }
 
 }

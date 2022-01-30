@@ -1,0 +1,61 @@
+<mat-card class="edit-card">
+  <mat-card-header>
+    <div mat-card-avatar class="avatar-icon" style="background-image: url('{{Item?.CategoryIcon}}');"></div>
+    <mat-card-title>Create Item</mat-card-title>
+    <mat-card-subtitle>{{Item?.Category}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="card-content">
+
+    <div id="part-icon">
+      <img *ngIf="Item !== undefined" class="item-icon" src="{{Item.Icon}}" alt="Photo of a Shiba Inu">
+      <div class="icon-chooser">
+        <mat-label id="icon-label">Icon</mat-label>
+        <button class="btAddIcon" mat-mini-fab color="primary" aria-label="Choose a matching icon" matTooltip="Choose Icon"
+          routerLink="/item-create">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <form [formGroup]="Form">
+      <mat-form-field  id="first-field" appearance="fill" class="mat-form-field-readonly">
+        <mat-label>Name</mat-label>
+        <input [formControl]="NameControl" matInput [value]="Item?.Rarity">
+        <mat-error *ngIf="NameControl.invalid">{{GetError(NameControl)}}</mat-error>
+      </mat-form-field>
+      <mat-form-field  appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select [formControl]="CategoryControl">
+          <mat-option *ngFor="let category of AvailableCategories" [value]="category">
+            {{category.FormattedValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="CategoryControl.invalid">{{GetError(CategoryControl)}}</mat-error>
+      </mat-form-field>
+      <mat-form-field  appearance="fill">
+        <mat-label>Rarity</mat-label>
+        <mat-select [formControl]="RarityControl">
+          <mat-option *ngFor="let rarity of AvailableRarities" [value]="rarity">
+            {{rarity.FormattedValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="RarityControl.invalid">{{GetError(RarityControl)}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mat-form-field-readonly">
+        <mat-label>Price</mat-label>
+        <input [formControl]="PriceControl" matInput [value]="Item?.Price">
+        <mat-error *ngIf="PriceControl.invalid">{{GetError(PriceControl)}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mat-form-field-readonly">
+        <mat-label>Weight</mat-label>
+        <input [formControl]="WeightControl" matInput [value]="Item?.Weight">
+        <mat-error *ngIf="WeightControl.invalid">{{GetError(WeightControl)}}</mat-error>
+      </mat-form-field>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions id="action-buttons">
+    <button mat-raised-button color="primary" (click)="OnSaveClicked()">Save</button>
+    <button mat-raised-button color="primary" routerLink="/items">Cancel</button>
+  </mat-card-actions>
+</mat-card>

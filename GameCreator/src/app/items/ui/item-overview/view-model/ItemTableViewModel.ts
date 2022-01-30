@@ -1,7 +1,10 @@
+import { Guid } from 'guid-typescript';
+import { IItemViewModel } from '../../view-model/IItemViewModel';
 
 
-export class ItemViewModel
+export class ItemTableViewModel implements IItemViewModel
 {
+  RuntimeId: Guid;
   Name: string;
   Category: string;
   Rarity: string;
@@ -19,6 +22,7 @@ export class ItemViewModel
     icon: string,
     categoryIcon: string)
   {
+      this.RuntimeId = Guid.create();
       this.Name = name;
       this.Category = category;
       this.Rarity = rarity;

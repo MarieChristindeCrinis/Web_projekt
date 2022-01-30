@@ -21,6 +21,10 @@ import { ItemOverviewComponent } from './items/ui/item-overview/item-overview.co
 import { ItemCardComponent } from './items/ui/item-card/item-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { CharacterModule } from './character/character.module';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ItemFormComponent } from './items/ui/item-form/item-form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,8 @@ import { CharacterModule } from './character/character.module';
     MenuComponent,
     ItemOverviewComponent,
     HomeComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    ItemFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,9 @@ import { CharacterModule } from './character/character.module';
     MatRippleModule,
     MatCardModule,
     CharacterModule,
+    HttpClientModule,
+    MatTooltipModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

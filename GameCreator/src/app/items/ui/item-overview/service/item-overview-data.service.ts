@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { IItemModel } from '../../model/IItemModel';
-import { Rarity } from '../../model/Rarity';
-import { ItemQueryService } from '../../query-service/item-query.service';
-import { ItemViewModel } from '../view-model/ItemTableViewModel';
-import { ItemCategory } from '../../model/ItemCategory';
+import { IItemModel } from '../../../model/IItemModel';
+import { ItemRarity } from '../../../model/Rarity';
+import { ItemQueryService } from '../../../query-service/item-query.service';
+import { ItemTableViewModel } from '../view-model/ItemTableViewModel';
+import { ItemCategory } from '../../../model/ItemCategory';
+import { IItemViewModel } from '../../view-model/IItemViewModel';
+import { ItemCardViewModel } from '../../item-card/view-model/ItemCardViewModel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,19 +20,19 @@ export class ItemOverviewDataService {
     this.mQueryService = queryService;
   }
 
-  public QueryData() : Observable<ItemViewModel[]>
+  public QueryData() : Observable<IItemViewModel[]>
   {
     return this.mQueryService
       .AvailableItems
       .pipe(map(x => x.map(x => this._ConvertToTableViewModel(x))));
   }
 
-  private _ConvertToTableViewModel(item: IItemModel) : ItemViewModel
+  private _ConvertToTableViewModel(item: IItemModel) : ItemCardViewModel
   {
-    return new ItemViewModel(
+    return new ItemCardViewModel(
       item.Name,
       this._FormatCategory(item.Category),
-      Rarity[item.Rarity],
+      ItemRarity[item.Rarity],
       item.Price + ' Gold',
       item.Weight + ' lbs',
       item.Icon,

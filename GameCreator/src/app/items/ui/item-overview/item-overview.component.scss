@@ -45,12 +45,13 @@ $warn: mat-color($app-warn);
 
 mat-table {
   position: absolute;
+  overflow: auto;
 
   left: 5%;
   top: 10%;
 
   width: 40%;
-  max-height: 80%;
+  max-height: 72.5%;
 }
 
 .table-row:hover {
@@ -97,4 +98,22 @@ mat-table {
 
   overflow-y: scroll;
   height: 80%;
+}
+
+#btRemove {
+  position: absolute;
+
+  top: 85%;
+  left: 45%;
+
+  transform: translate(-100%, 0%);
+}
+
+#btAddItem {
+  position: absolute;
+
+  top: 50%;
+  right: 5%;
+
+  transform: translate(0%, -50%);
 }

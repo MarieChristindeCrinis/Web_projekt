@@ -1,6 +1,6 @@
 
 
-export enum Rarity
+export enum ItemRarity
 {
   Common,
   Uncommon,
