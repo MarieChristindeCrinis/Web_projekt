@@ -3,7 +3,7 @@
         <h2 class="title">Name: {{character?.name}}</h2>
     </div>
     <div class="card-body">
-        <p class="card-text"><span class="font-weight-bold">Race: </span> {{character?.race}}</p>
+        <p class="card-text"><span class="font-weight-bold">Race: </span> {{character?.race | racePipe}}</p>
         <p class="card-text"><span class="font-weight-bold">Age: </span> {{character?.age}}</p>
         <p class="card-text"><span class="font-weight-bold">Weight: </span> {{character?.weight}} lbs</p>
         <p class="card-text"><span class="font-weight-bold">Level: </span> {{character?.level}}</p>
@@ -14,7 +14,7 @@
             <button mat-icon-button type="button" class="btn btn-primary" (click)="executeDelete()">
                 <mat-icon>remove</mat-icon>
             </button>
-            <button mat-icon-button type="button" class="btn btn-primary ml-2">
+            <button mat-icon-button type="button" class="btn btn-primary ml-2" (click)="executeEdit()">
                 <mat-icon>edit</mat-icon>
             </button>
         </div>
