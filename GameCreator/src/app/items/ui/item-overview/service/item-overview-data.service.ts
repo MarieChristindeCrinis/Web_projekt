@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, firstValueFrom } from 'rxjs';
 import { IItemModel } from '../../../model/IItemModel';
 import { ItemRarity } from '../../../model/Rarity';
 import { ItemQueryService } from '../../../query-service/item-query.service';
 import { ItemCategory } from '../../../model/ItemCategory';
 import { IItemViewModel } from '../../view-model/IItemViewModel';
 import { ItemCardViewModel } from '../../item-card/view-model/ItemCardViewModel';
+import { ItemStorageService } from '../../../storage/item-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,14 @@ import { ItemCardViewModel } from '../../item-card/view-model/ItemCardViewModel'
 export class ItemOverviewDataService {
 
   private mQueryService: ItemQueryService;
+  private mStorageService: ItemStorageService;
 
-  constructor(queryService: ItemQueryService)
+  constructor(
+    queryService: ItemQueryService,
+    storageService: ItemStorageService)
   {
     this.mQueryService = queryService;
+    this.mStorageService = storageService;
   }
 
   public QueryData() : Observable<IItemViewModel[]>
@@ -24,6 +29,13 @@ export class ItemOverviewDataService {
     return this.mQueryService
       .AvailableItems
       .pipe(map(x => x.map(x => this._ConvertToCardViewModel(x))));
+  }
+
+  public async DeleteItem(item : IItemViewModel) : Promise<boolean>
+  {
+    const itemModel = await firstValueFrom(this.mQueryService.QueryItem(item.Id));
+
+    return await this.mStorageService.DeleteItem(itemModel)
   }
 
   private _ConvertToCardViewModel(item: IItemModel) : ItemCardViewModel

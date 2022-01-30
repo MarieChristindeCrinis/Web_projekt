@@ -14,17 +14,17 @@ export class ItemOverviewComponent implements OnInit, OnDestroy {
   public AvailableItems: ItemCardViewModel[];
 
   private mItemDataService: ItemOverviewDataService;
-  private mSubjscriptions: Subscription[];
+  private mSubscriptions: Subscription[];
 
   constructor(itemDataService: ItemOverviewDataService)
   {
     this.mItemDataService = itemDataService;
-    this.mSubjscriptions = [];
+    this.mSubscriptions = [];
   }
 
   ngOnInit(): void
   {
-    this.mSubjscriptions.push(
+    this.mSubscriptions.push(
       this.mItemDataService.QueryData()
         .subscribe(items =>
           {
@@ -34,11 +34,13 @@ export class ItemOverviewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void
   {
-    this.mSubjscriptions.forEach(x => x.unsubscribe());
+    this.mSubscriptions.forEach(x => x.unsubscribe());
   }
 
-  public AddItemAction(item: IItemViewModel)
+  public DeleteItemAction(item: IItemViewModel)
   {
-
+    const index = this.AvailableItems.indexOf(item);
+    this.AvailableItems.splice(index, 1);
+    this.mItemDataService.DeleteItem(item);
   }
 }

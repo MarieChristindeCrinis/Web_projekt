@@ -58,6 +58,24 @@ export class ItemStorageService {
     }
   }
 
+  public async DeleteItem(item: IItemModel) : Promise<boolean>
+  {
+    const request = this.mHttpService.delete(
+      this.mServerLocationProvider.ServerLocation+'items/'+item.DbId,
+    );
+
+    try
+    {
+      const result = await firstValueFrom(request);
+      return true;
+    }
+    catch(error)
+    {
+      console.log(`Error during save of Item ${item.Name}:\n ${error}`);
+      return false;
+    }
+  }
+
   private _ConvertToStorageModel(item: IItemModel) : IStorageItemModel
   {
     return new StorageItemModdel(
