@@ -26,7 +26,7 @@ export class MenuComponent implements AfterViewInit {
 
     this.mNavigations = [
       "",
-      "", // Todo: add Character Path
+      "character", // Todo: add Character Path
       "", // Todo: add Class Path
       "items",
       "location"
