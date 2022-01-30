@@ -36,6 +36,10 @@ const APP_ROUTES: Routes = [
     path: 'character',
     component: CharacterViewComponent
   },
+  {
+    path: 'character',
+    component: CharacterViewComponent
+  },
   { 
     path: '**',
     redirectTo: 'home'

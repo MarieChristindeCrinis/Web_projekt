@@ -1,1 +1,25 @@
-<p>character-view works!</p>
+<div class="container mt-3">
+
+  <h1 class="header selected-header">Character Overview:</h1>
+  
+  <div class="container" >
+      <div class="row mb-2">
+        <div class="btn-toolbar">
+            <button mat-icon-button class="btn btn-primary">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+      </div>
+      <div class="row" >
+        <app-character-card-view 
+            class="col" 
+            *ngFor="let h of chars" 
+            [character]="h" 
+            (deleteCharacter)="deleteChar(h)"
+            (updateCharacter)="update(h)"
+            >
+        </app-character-card-view>
+    </div>
+  </div>
+</div>
+

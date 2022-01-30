@@ -6,7 +6,7 @@
     <mat-card-subtitle>{{Item.Category}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="card-content">
-    <img class="item-icon" src="{{Item.Icon}}" alt="Photo of a Shiba Inu">
+    <img *ngIf="Item.Icon !== ''" class="item-icon" src="{{Item.Icon}}" alt="Photo of a Shiba Inu">
     <mat-form-field id="first-field" appearance="fill" class="mat-form-field-readonly">
       <mat-label>Rarity</mat-label>
       <input matInput [value]="Item.Rarity" [readonly]="true">

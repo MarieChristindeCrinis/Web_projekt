@@ -12,6 +12,7 @@ export class ItemModel implements IItemModel
   public Weight: number;
   public Icon: string;
   public Category: ItemCategory;
+  public DbId: number | undefined;
 
   constructor(
     id: Guid,
@@ -20,9 +21,11 @@ export class ItemModel implements IItemModel
     rarity: ItemRarity,
     price: number,
     weight: number,
-    icon: string
+    icon: string,
+    dbId?: number
   )
   {
+    this.DbId = dbId ?? undefined;
     this.Id = id;
     this.Name = name;
     this.Category = category;

@@ -80,6 +80,7 @@ export class ItemOverviewComponent implements OnInit, OnDestroy {
   public AddItemAction(item: IItemViewModel)
   {
     const tableViewModel = new ItemTableViewModel(
+      item.Id,
       item.Name,
       item.Category,
       item.Rarity,
