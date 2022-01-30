@@ -29,18 +29,24 @@ export class ItemFormDataService
     id: Guid | undefined,
     dbId: number | undefined,
     name: string,
-    category: SelectorItemViewModel<ItemCategory>,
-    rarity: SelectorItemViewModel<ItemRarity>,
+    category: SelectorItemViewModel<ItemCategory> | ItemCategory,
+    rarity: SelectorItemViewModel<ItemRarity> | ItemRarity,
     price: string,
     weight: string,
     icon: string
   ) : Promise<boolean>
   {
+    const categoryVm = category as SelectorItemViewModel<ItemCategory>;
+    const rarityVm = rarity as SelectorItemViewModel<ItemRarity>;
+
+    const categoryValue = categoryVm.Value ?? category;
+    const rarityValue = rarityVm.Value ?? rarity;
+
     const item = new ItemModel(
       id ?? Guid.create(),
       name,
-      category.Value,
-      rarity.Value,
+      categoryValue,
+      rarityValue,
       parseFloat(price),
       parseFloat(weight),
       icon,
