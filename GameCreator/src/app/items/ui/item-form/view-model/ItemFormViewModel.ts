@@ -1,14 +1,15 @@
 import { Guid } from 'guid-typescript';
-import { IItemViewModel } from '../../view-model/IItemViewModel';
+import { ItemCategory } from '../../../model/ItemCategory';
+import { ItemRarity } from '../../../model/Rarity';
+import { SelectorItemViewModel } from '../../view-model/SelectorItemViewModel';
 
-
-export class ItemTableViewModel implements IItemViewModel
+export class ItemFormViewModel
 {
   Id: Guid;
-  RuntimeId: Guid;
+  DbId: number | undefined;
   Name: string;
-  Category: string;
-  Rarity: string;
+  Category: SelectorItemViewModel<ItemCategory>;
+  Rarity: SelectorItemViewModel<ItemRarity>;
   Price: string;
   Weight: string;
   Icon: string;
@@ -16,16 +17,17 @@ export class ItemTableViewModel implements IItemViewModel
 
   constructor(
     id: Guid,
+    dbId: number | undefined,
     name: string,
-    category: string,
-    rarity: string,
+    category: SelectorItemViewModel<ItemCategory>,
+    rarity: SelectorItemViewModel<ItemRarity>,
     price: string,
     weight: string,
     icon: string,
     categoryIcon: string)
   {
       this.Id = id;
-      this.RuntimeId = Guid.create();
+      this.DbId = dbId;
       this.Name = name;
       this.Category = category;
       this.Rarity = rarity;

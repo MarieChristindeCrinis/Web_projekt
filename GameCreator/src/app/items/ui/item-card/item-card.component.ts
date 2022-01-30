@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { IItemViewModel } from '../view-model/IItemViewModel';
 
 @Component({
@@ -12,16 +13,24 @@ export class ItemCardComponent {
   public Item: IItemViewModel;
 
   @Output()
-  public AddItem: EventEmitter<IItemViewModel>;
+  public DeleteItem: EventEmitter<IItemViewModel>;
 
-  constructor()
+  private mRouter: Router;
+
+  constructor(router: Router)
   {
-    this.AddItem = new EventEmitter<IItemViewModel>();
+    this.mRouter = router;
+    this.DeleteItem = new EventEmitter<IItemViewModel>();
   }
 
-  public OnAddClicked()
+  public OnDeleteClicked()
   {
-    this.AddItem.emit(this.Item);
+    this.DeleteItem.emit(this.Item);
+  }
+
+  public OnEditClicked()
+  {
+    this.mRouter.navigate(['/item-create',{id: this.Item.Id.toString()}]);
   }
 
 }

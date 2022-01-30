@@ -10,6 +10,7 @@ import { CharacterClientService } from '../service/character-client.service';
 })
 export class CharacterViewComponent implements OnInit {
   chars! : Array<Character>;
+  search : string = '';
 
   constructor(private characterService: CharacterClientService) { }
 
@@ -17,7 +18,7 @@ export class CharacterViewComponent implements OnInit {
     this.getCharacters();
   }
 
-  getCharacters(search: string = ''): void {
+  getCharacters(): void {
     this.characterService.getCharacters(
       {
         next: (chars: Character[]) => {
@@ -25,10 +26,15 @@ export class CharacterViewComponent implements OnInit {
           console.log(JSON.stringify(chars)); 
         },
         error: (err) => console.log(err),
-        complete: () => console.log('Done fetching Chars')
+        complete: () =>{} 
       },
-      search
+      this.search
     )
+  }
+
+  clear() : void{
+    this.search = '';
+    this.getCharacters();
   }
 
   deleteChar(character: Character): void {
@@ -38,8 +44,8 @@ export class CharacterViewComponent implements OnInit {
           this.getCharacters();
         },
         error: (err) => console.log(err),
-        complete: () => console.log('Done fetching Chars')
-      })
+        complete: () => {}
+      });
   }
 
   update(character: Character): void {
@@ -49,8 +55,8 @@ export class CharacterViewComponent implements OnInit {
           this.getCharacters();
         },
         error: (err) => console.log(err),
-        complete: () => console.log('Done fetching Chars')
-      })
+        complete: () => {}
+      });
   }
 
 }

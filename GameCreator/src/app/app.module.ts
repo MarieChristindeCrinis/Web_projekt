@@ -14,7 +14,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatTableModule } from '@angular/material/table';
 import { HomeComponent } from './home/home.component';
 import { MatRippleModule } from '@angular/material/core';
 import { ItemOverviewComponent } from './items/ui/item-overview/item-overview.component';
@@ -26,6 +25,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ItemFormComponent } from './items/ui/item-form/item-form.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ClassModule } from './class/class.module';
+import { LocationModule } from './location/location.module';
 
 @NgModule({
   declarations: [
@@ -47,9 +47,9 @@ import { ClassModule } from './class/class.module';
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule,
     NgbModule,
-    MatTableModule,
+    MatInputModule,
+    MatSelectModule,
     MatRippleModule,
     MatCardModule,
     CharacterModule,
@@ -57,7 +57,11 @@ import { ClassModule } from './class/class.module';
     MatTooltipModule,
     MatSelectModule,
     AppRoutingModule,
+<<<<<<< HEAD
     ClassModule
+=======
+    LocationModule,
+>>>>>>> 7bc64abd87d0df40c0067be9b2938d3abe968b10
   ],
   providers: [],
   bootstrap: [AppComponent]

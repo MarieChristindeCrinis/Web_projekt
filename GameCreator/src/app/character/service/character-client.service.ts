@@ -22,19 +22,25 @@ export class CharacterClientService {
         .subscribe(observer);
     }
   }
+  
+  getCharacter(observer : Observer<Character[]>, id: string) : void {
+      this.client.get<Character[]>(`${this.serverLocationService.ServerLocation}characters`, {params: new HttpParams().set('id', id)})
+        .subscribe(observer);
+  }
 
   postCharacter(character: Character, observer : Observer<Character>) : void {
+    console.log('posting character');
     this.client.post<Character>(`${this.serverLocationService.ServerLocation}characters`, character)
       .subscribe(observer);
   }
 
-  deleteCharacter(characterId: Guid, observer : Observer<Character>) : void {
-    this.client.delete<Character>(`${this.serverLocationService.ServerLocation}characters/${characterId.toString()}`)
+  deleteCharacter(characterId: string, observer : Observer<Character>) : void {
+    this.client.delete<Character>(`${this.serverLocationService.ServerLocation}characters/${characterId}`)
       .subscribe(observer);
   }
 
   updateCharacter(character: Character, observer : Observer<Character>): void {
-    this.client.put<Character>(`${this.serverLocationService.ServerLocation}characters/${character.id.toString()}`, character)
+    this.client.put<Character>(`${this.serverLocationService.ServerLocation}characters/${character.id}`, character)
       .subscribe(observer);
   }
 }

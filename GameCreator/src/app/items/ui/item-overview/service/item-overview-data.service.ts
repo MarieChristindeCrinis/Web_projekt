@@ -1,33 +1,102 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, firstValueFrom } from 'rxjs';
 import { IItemModel } from '../../../model/IItemModel';
 import { ItemRarity } from '../../../model/Rarity';
 import { ItemQueryService } from '../../../query-service/item-query.service';
-import { ItemTableViewModel } from '../view-model/ItemTableViewModel';
 import { ItemCategory } from '../../../model/ItemCategory';
 import { IItemViewModel } from '../../view-model/IItemViewModel';
 import { ItemCardViewModel } from '../../item-card/view-model/ItemCardViewModel';
+import { ItemStorageService } from '../../../storage/item-storage.service';
+import { ItemRaritiesProviderService } from '../../services/item-rarities-provider.service';
+import { ItemCategoriesProviderService } from '../../services/item-categories-provider.service';
+import { SelectorItemViewModel } from '../../view-model/SelectorItemViewModel';
+import { QueryFilter } from '../../../query-service/filter/QueryFilter';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemOverviewDataService {
 
-  private mQueryService: ItemQueryService;
+  private mItemStorageService: ItemStorageService;
+  private mItemQueryService: ItemQueryService;
+  private mItemCategoriesProvider: ItemCategoriesProviderService;
+  private mItemRaritiesProvider: ItemRaritiesProviderService;
 
-  constructor(queryService: ItemQueryService)
+  constructor(
+    itemStorageService: ItemStorageService,
+    itemQueryService: ItemQueryService,
+    itemRaritiesProvider: ItemRaritiesProviderService,
+    itemCategoriesProvider: ItemCategoriesProviderService)
   {
-    this.mQueryService = queryService;
+    this.mItemQueryService = itemQueryService;
+    this.mItemStorageService = itemStorageService;
+    this.mItemCategoriesProvider = itemCategoriesProvider;
+    this.mItemRaritiesProvider = itemRaritiesProvider;
   }
 
-  public QueryData() : Observable<IItemViewModel[]>
+  public QueryAllItems() : Observable<IItemViewModel[]>
   {
-    return this.mQueryService
+    return this.mItemQueryService
       .AvailableItems
-      .pipe(map(x => x.map(x => this._ConvertToTableViewModel(x))));
+      .pipe(map(x => x.map(x => this._ConvertToCardViewModel(x))));
   }
 
-  private _ConvertToTableViewModel(item: IItemModel) : ItemCardViewModel
+  public QueryItems(filters: QueryFilter[]) : Observable<IItemViewModel[]>
+  {
+    return this.mItemQueryService
+      .QueryItems(filters)
+      .pipe(map(x => x.map(x => this._ConvertToCardViewModel(x))));;
+  }
+
+  public async DeleteItem(item : IItemViewModel) : Promise<boolean>
+  {
+    const itemModel = await firstValueFrom(this.mItemQueryService.QueryItem(item.Id));
+
+    return await this.mItemStorageService.DeleteItem(itemModel)
+  }
+
+  public GetItemCategories() : SelectorItemViewModel<ItemCategory>[]
+  {
+    return this.mItemCategoriesProvider.GetItemCategories();
+  }
+
+  public GetItemRarities() : SelectorItemViewModel<ItemRarity>[]
+  {
+    return this.mItemRaritiesProvider.GetItemRarities();
+  }
+
+  public CreateFilter(
+    searchText: string,
+    selectedCategories: SelectorItemViewModel<ItemCategory>[],
+    selectedRarities: SelectorItemViewModel<ItemRarity>[]): QueryFilter[]
+  {
+    const filters = [];
+
+    if(searchText !== '' && searchText !== undefined)
+    {
+      filters.push(new QueryFilter('Name_like', [searchText]));
+    }
+
+    if(selectedCategories.length > 0)
+    {
+      filters.push(
+        new QueryFilter(
+          'Category',
+          selectedCategories.map(x => x.Value+'')));
+    }
+
+    if(selectedRarities.length > 0)
+    {
+      filters.push(
+        new QueryFilter(
+          'Rarity',
+          selectedRarities.map(x => x.Value+'')));
+    }
+
+    return filters;
+  }
+
+  private _ConvertToCardViewModel(item: IItemModel) : ItemCardViewModel
   {
     return new ItemCardViewModel(
       item.Id,
