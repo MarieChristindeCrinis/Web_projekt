@@ -6,8 +6,8 @@
       "Name": "Greatsword",
       "Category": 3,
       "Rarity": 1,
-      "Price": 50,
-      "Weight": 6,
+      "Price": 55,
+      "Weight": 8,
       "Icon": "assets/items/greatsword.png"
     },
     {
@@ -89,6 +89,22 @@
       "Weight": 3.7,
       "Icon": "",
       "id": 8
+    },
+    {
+      "Identifier": "29ecb19c-ff9e-be8d-c349-7ba6d80b2cd9",
+      "Name": "Shortsword",
+      "Category": {
+        "Value": 3,
+        "FormattedValue": "Melee Weapon"
+      },
+      "Rarity": {
+        "Value": 0,
+        "FormattedValue": "Common"
+      },
+      "Price": 12,
+      "Weight": 2,
+      "Icon": "",
+      "id": 9
     }
   ],
   "characters": []

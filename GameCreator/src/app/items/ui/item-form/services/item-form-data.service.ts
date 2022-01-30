@@ -5,6 +5,9 @@ import { SelectorItemViewModel } from '../view-model/SelectorItemViewModel';
 import { ItemModel } from '../../../model/ItemModel';
 import { Guid } from 'guid-typescript';
 import { ItemStorageService } from '../../../storage/item-storage.service';
+import { ItemQueryService } from '../../../query-service/item-query.service';
+import { ItemFormViewModel } from '../view-model/ItemFormViewModel';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +15,25 @@ import { ItemStorageService } from '../../../storage/item-storage.service';
 export class ItemFormDataService
 {
   private mItemStorageService: ItemStorageService;
+  private mItemQueryService: ItemQueryService;
 
-  constructor(itemStorageService: ItemStorageService)
+  constructor(
+    itemStorageService: ItemStorageService,
+    itemQueryService: ItemQueryService)
   {
+    this.mItemQueryService = itemQueryService;
     this.mItemStorageService = itemStorageService;
   }
 
   public async StoreItem(
     id: Guid | undefined,
+    dbId: number | undefined,
     name: string,
     category: SelectorItemViewModel<ItemCategory>,
     rarity: SelectorItemViewModel<ItemRarity>,
     price: string,
-    weight: string
+    weight: string,
+    icon: string
   ) : Promise<boolean>
   {
     const item = new ItemModel(
@@ -34,9 +43,28 @@ export class ItemFormDataService
       rarity.Value,
       parseFloat(price),
       parseFloat(weight),
-      '');
+      icon,
+      dbId);
 
     return await this.mItemStorageService.StoreItemModel(item);
+  }
+
+  public async GetItem(id: Guid) : Promise<ItemFormViewModel>
+  {
+    const itemModelRequest = this.mItemQueryService.QueryItem(id);
+
+    const itemModel = await firstValueFrom(itemModelRequest);
+
+    return new ItemFormViewModel(
+      itemModel.Id,
+      itemModel.DbId,
+      itemModel.Name,
+      new SelectorItemViewModel<ItemCategory>(itemModel.Category, this._FormatCategory(itemModel.Category)),
+      new SelectorItemViewModel<ItemRarity>(itemModel.Rarity, ItemRarity[itemModel.Rarity]),
+      itemModel.Price + '',
+      itemModel.Weight + '',
+      itemModel.Icon,
+      '');
   }
 
   public GetItemCategories() : SelectorItemViewModel<ItemCategory>[]

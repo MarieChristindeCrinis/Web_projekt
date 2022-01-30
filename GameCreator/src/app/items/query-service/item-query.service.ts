@@ -6,7 +6,6 @@ import { ServerLocationService } from 'src/app/shared/server-location/server-loc
 import { IStorageItemModel } from '../model/IStorageItemModel';
 import { ItemModel } from '../model/ItemModel';
 import { Guid } from 'guid-typescript';
-import { StorageItemModdel } from '../model/StorageItemModel';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +14,22 @@ export class ItemQueryService {
 
   public AvailableItems: Observable<IItemModel[]>;
 
+  private mServerLocationProvider: ServerLocationService;
+  private mHttpClient: HttpClient;
+
   constructor(serverLocationProvider: ServerLocationService, httpService: HttpClient)
   {
+    this.mServerLocationProvider = serverLocationProvider;
+    this.mHttpClient = httpService;
+
     this.AvailableItems = httpService.get<IStorageItemModel[]>(serverLocationProvider.ServerLocation + 'items')
       .pipe(map(items => items.map(x => this._ConvertToRuntimeModel(x))));
+  }
+
+  public QueryItem(id: Guid) : Observable<IItemModel>
+  {
+    return this.mHttpClient.get<IStorageItemModel[]>(this.mServerLocationProvider.ServerLocation + 'items?Identifier=' + id.toString())
+      .pipe(map(item => this._ConvertToRuntimeModel(item[0])));
   }
 
   private _ConvertToRuntimeModel(storageModel: IStorageItemModel)
