@@ -56,13 +56,9 @@ import { LocationModule } from './location/location.module';
     CharacterModule,
     HttpClientModule,
     MatTooltipModule,
-<<<<<<< HEAD
-    AppRoutingModule
-=======
     MatSelectModule,
     AppRoutingModule,
     LocationModule
->>>>>>> ecae3e13b94eb28c3c59690459b502f40f15d8f5
   ],
   providers: [],
   bootstrap: [AppComponent]
