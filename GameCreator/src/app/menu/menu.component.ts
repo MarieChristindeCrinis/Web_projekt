@@ -29,7 +29,7 @@ export class MenuComponent implements AfterViewInit {
       "", // Todo: add Character Path
       "", // Todo: add Class Path
       "items",
-      ""  // Todo: add Locations Path
+      "location"
     ]
   }
 
