@@ -1,57 +1,5 @@
 <div class="container">
 
-  <h1 class="header selected-header">Selected Items:</h1>
-
-  <mat-table mat-table [dataSource]="ChoosenItems" class="mat-elevation-z8">
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Index Column -->
-    <ng-container matColumnDef="index">
-      <mat-header-cell *matHeaderCellDef> Nr. </mat-header-cell>
-      <mat-cell mat-cell *matCellDef="let element; let i = index;"> {{i}} </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
-    </ng-container>
-
-    <!-- Category Column -->
-    <ng-container matColumnDef="category">
-      <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Category}} </mat-cell>
-    </ng-container>
-
-    <!-- Rarity Column -->
-    <ng-container matColumnDef="rarity">
-      <mat-header-cell *matHeaderCellDef> Rarity </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Rarity}} </mat-cell>
-    </ng-container>
-
-    <!-- Price Column -->
-    <ng-container matColumnDef="price">
-      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Price}} </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Weight}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="ColumnHeaders"></mat-header-row>
-    <mat-row class="table-row" mat-ripple [ngClass]="{'highlight': SelectedItem?.RuntimeId == row?.RuntimeId}"
-      (click)="SetSelection(row)" *matRowDef="let row; columns: ColumnHeaders;"></mat-row>
-  </mat-table>
-
-  <button *ngIf="RemoveButtonVisibility" id="btRemove" mat-raised-button color="primary"
-    (click)="RemoveItemAction()">Remove</button>
-
-  <h1 class="header available-header">Available Items:</h1>
-
   <div class="item-card-container">
     <div *ngFor="let item of AvailableItems">
       <app-item-card [Item]="item" (AddItem)="AddItemAction($event)"></app-item-card>
@@ -62,7 +10,6 @@
     <button mat-fab color="primary" aria-label="Create a new Item" matTooltip="Add a new Item" routerLink="/item-create">
       <mat-icon>add</mat-icon>
     </button>
-
   </div>
 
 </div>
