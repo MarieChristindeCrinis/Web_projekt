@@ -1,11 +1,13 @@
 <div class="content">
-    <h1 class="card">Location</h1>
+    <div class="headerCard h1">Location</div>
     
     <app-location-search (locations)="updateLocations($event)"></app-location-search>
     
-    <div *ngFor="let location of locations">
-      <app-location-card [locationItem]="location">
-      </app-location-card>
+    <div class="divOv">
+      <div *ngFor="let location of locations">
+       <app-location-card [locationItem]="location">
+       </app-location-card>
+      </div>
     </div>
 </div>
 

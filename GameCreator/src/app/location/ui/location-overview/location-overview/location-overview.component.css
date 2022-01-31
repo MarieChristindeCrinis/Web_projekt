@@ -1,0 +1,22 @@
+.divOv {
+    display: flex;
+    width: 30%;
+    margin-right: 3.33333%;
+    padding: 20px;
+    box-sizing: border-box;
+    width: auto;
+    overflow: auto;
+}
+
+.h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+}
+
+.headerCard {
+    background-color: #7FB069;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+}

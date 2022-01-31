@@ -108,11 +108,11 @@
     {
       "id": 0,
       "name": "Desert Island",
-      "biome_types": "desert",
+      "biome_types": ["desert"],
       "biome_size": "normal",
       "day_night_cycle": false,
       "weather_cycle": true,
-      "npc_desity": "low"
+      "npc_density": "low"
     },
     {
       "id": 1,
@@ -125,7 +125,7 @@
       "biome_size": "small",
       "day_night_cycle": true,
       "weather_cycle": false,
-      "npc_desity": "high"
+      "npc_density": "high"
     },
     {
       "id": 2,
@@ -142,7 +142,7 @@
       "biome_size": "big",
       "day_night_cycle": false,
       "weather_cycle": false,
-      "npc_desity": "normal"
+      "npc_density": "normal"
     }
   ]
 }

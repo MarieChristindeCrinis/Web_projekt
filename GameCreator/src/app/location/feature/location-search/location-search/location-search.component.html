@@ -12,7 +12,8 @@
         </form>
 
         <div class="form-group">
-            <button [disabled]="!name" (click)="search()" class="btn btn-default">Search</button>
+            <button [disabled]="!name" (click)="search()" class="btn btn-default search">Search</button>
+            <a class="btn btn-default create" [routerLink]="['../location-edit', { showDetails: true }]">Create New Location</a>
         </div>
 
         <div

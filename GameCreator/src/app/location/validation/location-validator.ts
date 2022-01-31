@@ -1,12 +1,12 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export function validateName(this: any, control: AbstractControl): ValidationErrors | null {
-  const validLocationNames: string[] = [ 'test' ];
+  const v: string[] = [ 'test' ];
 
-  if(control.value && !this.validLocationNames.includes(control.value)) {
+  if(control.value && !this.validNames.includes(control.value)) {
     return {
       name: {
-        validNames: this.validLocationNames,
+        validNames: this.validNames,
         actualLocationNames: control.value
       }
     };        
@@ -14,12 +14,12 @@ export function validateName(this: any, control: AbstractControl): ValidationErr
   return null;
 }
 
-export function validateNameWithParams(validLocationNames: string[]): ValidatorFn {
+export function validateNameWithParams(validNames: string[]): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    if (control.value && !validLocationNames.includes(control.value)) {
+    if (control.value && !validNames.includes(control.value)) {
       return {
         name: {
-          validNames: validLocationNames,
+          validNames: validNames,
           actualLocationNames: control.value
         }
       };

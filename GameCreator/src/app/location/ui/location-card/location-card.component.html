@@ -1,25 +1,27 @@
 
 <div
     class="card"
-    [ngStyle]="{'background-color': (selected) ? 'white' : 'grey' }">
+    [ngStyle]="{'background-color': (selected) ? 'grey' : 'white' }">
     
     <div class="header">
-        <h2>{{ locationItem?.name }}</h2>
+        <h2>Name: {{ locationItem?.name }}</h2>
     </div>
 
     <div class="content">
-        <h4>{{ locationItem?.id }}</h4>
+        <div>ID: {{ locationItem?.id }}</div>
+        <p>Biome types:</p>
         <ul>
             <li *ngFor="let type of locationItem?.biome_types">
                 {{ type }}
             </li>
         </ul>
         
-        <h4>{{ locationItem?.biome_size }}</h4>
-        <h4>{{ locationItem?.day_night_cycle }}</h4>
-        <h4>{{ locationItem?.weather_cycle }}</h4>
-        <h4>{{ locationItem?.npc_density }}</h4>
+        <div>Biome size: {{ locationItem?.biome_size }}</div>
+        <div>Day-Night-Cycle: {{ locationItem?.day_night_cycle }}</div>
+        <div>Weather-Cycle: {{ locationItem?.weather_cycle }}</div>
+        <div>NPC density: {{ locationItem?.npc_density }}</div>
 
-        <button class="btn btn-default" [routerLink]="['../location-edit', locationItem?.id]">Edit</button>
+        <a class="btn btn-default edit" [routerLink]="['../location-edit', locationItem?.id, { showDetails: true }]">Edit</a>
+        <button class="btn btn-default delete" (click)="delete(locationItem?.name)">Delete</button>
     </div>
 </div>

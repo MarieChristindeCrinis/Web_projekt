@@ -16,4 +16,7 @@ export class LocationCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  delete(name: any): void{
+    
+  }
 }

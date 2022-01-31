@@ -9,7 +9,7 @@ import { Location } from '../../../../entities/location';
 })
 export class LocationSearchComponent implements OnInit {
   @Output() locations = new EventEmitter<Location[]>();
-  name: string;
+  name: string = "";
 
   constructor(private locationService: LocationService) { }
 
